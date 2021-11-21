@@ -1,11 +1,11 @@
 import SwiperCore, { Autoplay, EffectFade } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useEffect } from 'react';
-import './MainCarousel.css';
+import './HomeCarousel.css';
 import "swiper/swiper-bundle.css";
-import Navbar from './Navbar';
+import Navbar from '../Navbar/Navbar';
 import { IoIosStar } from 'react-icons/io';
-import imdb from './imdb.png'
+import imdb from '../../../assets/imdb.png'
 
 const img = 'https://image.tmdb.org/t/p/original';
 const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -15,7 +15,7 @@ const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str;
 }
 
-const MainCarousel = () => {
+const HomeCarousel = () => {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +44,7 @@ const MainCarousel = () => {
     }, [])
 
     return (
-        <div className='main-carousel'>
+        <div className='home-carousel'>
             <Navbar backgroundColor='transparent' position='fixed' />
             {error && <div>{error}</div>}
             {isLoading && <div className='loading-message'>Loading...</div>}
@@ -59,7 +59,7 @@ const MainCarousel = () => {
                 {movies.map((movie, i) => {
                     return <SwiperSlide key={i}>
                         {({ isActive }) => (
-                            <div className={`${isActive ? 'main-carousel-item active' : 'main-carousel-item'}`} style={{ backgroundImage: `url(${img}${movie.backdrop_path})` }}>
+                            <div className={`${isActive ? 'home-carousel-item active' : 'home-carousel-item'}`} style={{ backgroundImage: `url(${img}${movie.backdrop_path})` }}>
                                 <img className='carousel-item-poster' src={`${img}${movie?.poster_path}`} alt={movie.title} />
                                 <div className='carousel-item-info'>
                                     <h1 className='carousel-item-title'>{movie?.title || movie?.name || movie?.original_name}</h1>
@@ -72,7 +72,7 @@ const MainCarousel = () => {
                                         <img className='imdb-logo' src={imdb} alt="imdb" />
                                     </div>
                                     <div className='carousel-item-buttons'>
-                                        <button className='carousel-item-button-main'><i className="fas fa-play"></i>Watch Now</button>
+                                        <button className='carousel-item-button-home'><i className="fas fa-play"></i>Watch Now</button>
                                         <button className='carousel-item-button-secondary'><i className="far fa-heart"></i>Add To Favorites</button>
                                     </div>
                                 </div>
@@ -84,4 +84,4 @@ const MainCarousel = () => {
     )
 }
 
-export default MainCarousel
+export default HomeCarousel

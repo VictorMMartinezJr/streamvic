@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import popcorn from './popcorn.png'
+import popcorn from '../../../assets/popcorn.png'
 
 const Navbar = ({ backgroundColor, position }) => {
     const [navActive, setNavActive] = useState(false);
