@@ -1,0 +1,43 @@
+.component {
+    margin: 2rem;
+    color: #fff;
+    max-width: 200px;
+    transition: transform .2s ease-in-out;
+}
+
+.component:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s ease-in-out;
+}
+
+.component-img {
+    height: 295px;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    border: none;
+    
+}
+
+.component-title {
+    font-size: 1rem;
+    margin: .5rem 0;
+}
+
+.component-release {
+    color: grey;
+    font-size: .9rem;
+}
+
+@media screen and (max-width: 480px) {
+    .component {
+        margin: 1rem .5rem;
+        width: 150px;
+    }
+
+    .component-img {
+        height: 200px;
+    }
+}

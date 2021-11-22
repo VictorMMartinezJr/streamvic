@@ -1,45 +1,28 @@
 import SwiperCore, { Autoplay, EffectFade } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useEffect } from 'react';
 import './HomeCarousel.css';
 import "swiper/swiper-bundle.css";
 import Navbar from '../Navbar/Navbar';
 import { IoIosStar } from 'react-icons/io';
 import imdb from '../../../assets/imdb.png';
 import useFetch from '../../../hooks/UseFetch';
+
+// beginning of url for tmdb images
 const img = 'https://image.tmdb.org/t/p/original';
+
+// fetch trending movies url
 const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
 
+// initialize swiper core
 SwiperCore.use([Autoplay, EffectFade]);
+
+// compressing movie description 
 const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str;
 }
 
 const HomeCarousel = () => {
     const { data: movies, isLoading, error } = useFetch(fetchTrending);
-
-    // const fetchData = () => {
-    //     fetch(fetchTrending)
-    //         .then(resp => {
-    //             if (!resp.ok) {
-    //                 throw Error('Could not fetch the data for the resource');
-    //             }
-    //             return resp.json()
-    //         })
-    //         .then(data => {
-    //             setMovies(data.results.splice(0, 5));
-    //             setIsLoading(false);
-    //         })
-    //         .catch(err => {
-    //             setError(err.message);
-    //             setIsLoading(false);
-    //         })
-    // }
-
-    // useEffect(() => {
-    //     fetchData();
-    //     // eslint-disable-next-line
-    // }, [])
 
     return (
         <div className='home-carousel'>
