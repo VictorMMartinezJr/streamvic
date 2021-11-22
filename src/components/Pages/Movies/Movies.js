@@ -8,7 +8,8 @@ import './Content.css';
 // import { ThemeProvider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Navbar from '../../Stateful/Navbar/Navbar';
-// import SecondaryNavbar from '../SecondaryNavbar';
+import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
+
 
 
 const Movies = () => {
@@ -73,6 +74,7 @@ const Movies = () => {
     return (
         <section className='content-container'>
             <Navbar backgroundColor='#000' position='static' />
+            <FilterBtn />
             <div className='content-data'>
                 {error && <div>{error}</div>}
                 {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}

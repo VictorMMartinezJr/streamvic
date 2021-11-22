@@ -1,0 +1,50 @@
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    padding: .5rem 1rem;
+    background: red;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    box-shadow: 0 0 10px red;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.filter-btn i {
+    font-size: 1.5rem;
+}
+
+.filter-dropdown-choices {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    font-size: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.filter-dropdown-choices.active {
+    opacity: 1;
+    pointer-events:all;
+}
+
+.filter-span {
+    margin: .5rem 0;
+    cursor: pointer;
+    font-weight: 700;
+}
