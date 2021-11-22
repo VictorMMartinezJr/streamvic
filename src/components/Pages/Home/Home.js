@@ -1,7 +1,7 @@
-import AliceCarousel from '../../Stateful/AliceCarousel/TrendingCarousel';
+import AliceCarousel from '../../Stateful/TrendingCarousel/TrendingCarousel';
 import HomeCarousel from '../../Stateful/HomeCarousel/HomeCarousel';
 
-const Home = (url) => {
+const Home = () => {
     return (
         <section className='home'>
             <HomeCarousel />
