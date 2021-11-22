@@ -4,6 +4,7 @@ const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [numOfPages, setNumOfPages] = useState(10);
 
     useEffect(() => {
         fetch(url)
@@ -15,7 +16,7 @@ const useFetch = (url) => {
             })
             .then(data => {
                 setData(data.results);
-                console.log(data.results)
+                setNumOfPages(data.total_pages);
                 setIsLoading(false);
             })
             .catch(err => {
@@ -24,7 +25,7 @@ const useFetch = (url) => {
             })
     }, [url])
 
-    return { data, error, isLoading }
+    return { data, error, isLoading, numOfPages }
 }
 
 export default useFetch;

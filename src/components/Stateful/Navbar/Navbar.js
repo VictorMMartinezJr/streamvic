@@ -23,6 +23,7 @@ const Navbar = ({ backgroundColor, position }) => {
                 <h1 className='name'>StreamVic</h1>
                 <img className='navbar-img' src={popcorn} alt="popcorn" />
             </span>
+
             <div className="burger" onClick={() => setNavActive(!navActive)}>
                 <div className={navActive ? "line-1 toggle" : 'line-1'}></div>
                 <div className={navActive ? "line-2 toggle" : 'line-2'}></div>
@@ -37,6 +38,12 @@ const Navbar = ({ backgroundColor, position }) => {
                 </Link>
                 <Link to='/tv' style={{ color: '#fff', textDecoration: "none" }}>
                     <li className='nav-link'>TV Shows</li>
+                </Link>
+                <Link to='/favorites' style={{ color: '#fff', textDecoration: "none" }}>
+                    <li className='nav-link'>Favorites</li>
+                </Link>
+                <Link to='/search' style={{ color: '#fff', textDecoration: "none" }}>
+                    <i className="fas fa-search"></i>
                 </Link>
             </ul>
         </div>

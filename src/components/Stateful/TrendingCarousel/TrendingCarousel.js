@@ -11,9 +11,8 @@ const imgUrl = 'https://image.tmdb.org/t/p/original';
 // fetch trending movies url
 const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
 
-const TrendingCarousel = ({ url, title }) => {
+const TrendingCarousel = ({ title }) => {
     const { data, isLoading, error } = useFetch(fetchTrending);
-    console.log(data)
 
     // items in carousel
     const items = data.map(data => {
@@ -22,6 +21,7 @@ const TrendingCarousel = ({ url, title }) => {
                 <div className='trending-img-container'>
                     <img className='trending-carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
                     <p className='trending-movie-rating' style={{ color: data.vote_average >= 8 ? 'green' : 'orange' }}>{data?.vote_average > 0 ? data?.vote_average : 'n/a'}</p>
+                    <i class="far fa-heart trending-movie-favorite"></i>
                 </div>
             </Link>
             <h4>{data?.name || data?.title}</h4>

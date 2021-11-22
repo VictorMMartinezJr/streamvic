@@ -23,7 +23,15 @@
     padding: .5rem;
     top: 0;
     right: 0;
-    font-weight: 700;
+    font-weight: 900;
+  }
+
+  .trending-movie-favorite {
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 5px;
+    right: 5px;
+    color: #00fff5
   }
   
   .img-container {
