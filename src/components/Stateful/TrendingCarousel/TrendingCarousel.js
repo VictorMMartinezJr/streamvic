@@ -13,6 +13,7 @@ const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${p
 
 const TrendingCarousel = ({ url, title }) => {
     const { data, isLoading, error } = useFetch(fetchTrending);
+    console.log(data)
 
     // items in carousel
     const items = data.map(data => {
@@ -20,7 +21,7 @@ const TrendingCarousel = ({ url, title }) => {
             <Link to={`/moviedetails/${data.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                 <div className='trending-img-container'>
                     <img className='trending-carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
-                    <p className='trending-movie-rating' style={{ color: data.vote_average >= 8 ? 'green' : 'orange' }}>{data.vote_average}</p>
+                    <p className='trending-movie-rating' style={{ color: data.vote_average >= 8 ? 'green' : 'orange' }}>{data?.vote_average > 0 ? data?.vote_average : 'n/a'}</p>
                 </div>
             </Link>
             <h4>{data?.name || data?.title}</h4>

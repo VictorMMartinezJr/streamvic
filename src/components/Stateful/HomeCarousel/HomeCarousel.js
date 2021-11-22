@@ -5,7 +5,7 @@ import "swiper/swiper-bundle.css";
 import Navbar from '../Navbar/Navbar';
 import { IoIosStar } from 'react-icons/io';
 import imdb from '../../../assets/imdb.png';
-import useFetch from '../../../hooks/UseFetch';
+import { useState, useEffect } from 'react'
 
 // beginning of url for tmdb images
 const img = 'https://image.tmdb.org/t/p/original';
@@ -22,7 +22,32 @@ const truncate = (str, n) => {
 }
 
 const HomeCarousel = () => {
-    const { data: movies, isLoading, error } = useFetch(fetchTrending);
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const fetchData = () => {
+        fetch(fetchTrending)
+            .then(resp => {
+                if (!resp.ok) {
+                    throw Error('Could not fetch the data for the resource');
+                }
+                return resp.json()
+            })
+            .then(data => {
+                setMovies(data.results.splice(0, 5));
+                setIsLoading(false);
+            })
+            .catch(err => {
+                setError(err.message);
+                setIsLoading(false);
+            })
+    }
+
+    useEffect(() => {
+        fetchData();
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className='home-carousel'>
