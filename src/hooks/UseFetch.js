@@ -14,7 +14,7 @@ const useFetch = (url) => {
                 return resp.json()
             })
             .then(data => {
-                setData(data.results.splice(0, 5));
+                setData(data.results);
                 setIsLoading(false);
             })
             .catch(err => {
