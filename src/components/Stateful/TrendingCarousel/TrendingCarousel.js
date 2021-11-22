@@ -1,54 +1,33 @@
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { useState, useEffect } from 'react';
 import './TrendingCarousel.css';
 import { Link } from 'react-router-dom';
 import unavaliable from '../../../assets/photo-unavaliable.png';
+import useFetch from '../../../hooks/UseFetch';
 
-// BaseURL for images
+// baseURL for images
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
+// fetch trending movies url
+const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
+
 const TrendingCarousel = ({ url, title }) => {
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const { data, isLoading, error } = useFetch(fetchTrending);
 
-    // Fetch Trending Movies & setMovies
-    const fetchData = () => {
-        fetch(url)
-            .then(resp => {
-                if (!resp.ok) {
-                    throw Error('Could not fetch the data for the resource');
-                }
-                return resp.json()
-            })
-            .then(data => {
-                setData(data.results || data.cast);
-                setIsLoading(false)
-            })
-            .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
-            })
-    }
-
-    // Call FetchTrending
-    useEffect(() => {
-        fetchData();
-        // eslint-disable-next-line
-    }, [])
-
-    // Items in carousel
+    // items in carousel
     const items = data.map(data => {
         return <div className='img-container'>
             <Link to={`/moviedetails/${data.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                <img className='trending-carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
+                <div className='trending-img-container'>
+                    <img className='trending-carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
+                    <p className='trending-movie-rating' style={{ color: data.vote_average >= 8 ? 'green' : 'orange' }}>{data.vote_average}</p>
+                </div>
             </Link>
             <h4>{data?.name || data?.title}</h4>
         </div>
     })
 
-    // Carousel Responsiveness
+    // carousel responsiveness
     const responsive = {
         0: {
             items: 1,
@@ -64,11 +43,11 @@ const TrendingCarousel = ({ url, title }) => {
         }
     }
 
-    // Next/Previous Buttons
+    // carousel next button
     const renderNextButton = () => {
         return <i className="fas fa-arrow-right"></i>
     }
-
+    // carousel previous button
     const renderPrevButton = () => {
         return <i className="fas fa-arrow-left"></i>
     }

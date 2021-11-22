@@ -12,6 +12,19 @@
     margin: 1rem;
     left: 10%;
   }
+
+  .trending-img-container {
+    position: relative;
+  }
+
+  .trending-movie-rating {
+    position: absolute;
+    background: #000;
+    padding: .5rem;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+  }
   
   .img-container {
     display: flex;
@@ -23,6 +36,7 @@
     transition: transform .2s ease-in-out;
   }
   
+
   .img-container:hover {
     transform: scale(1.1);
     transition: transform .2s ease-in-out;
