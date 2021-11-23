@@ -26,6 +26,7 @@ const Shows = () => {
             })
             .then(data => {
                 setShows(data.results);
+                console.log(data.results)
                 setIsLoading(false);
             })
             .catch(err => {
@@ -65,10 +66,10 @@ const Shows = () => {
             <div className='content-data'>
                 {error && <div>{error}</div>}
                 {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
-                {!isLoading && !error && shows && shows.map(movie => {
-                    return <div key={movie.id}>
-                        <Link to={`/moviedetails/${movie.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                            <SingleComponent title={movie.title} poster={movie.poster_path} rating={movie.vote_average} release={movie.release_date} id={movie.id} />
+                {!isLoading && !error && shows && shows.map(shows => {
+                    return <div key={shows.id}>
+                        <Link to={`/moviedetails/${shows.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
+                            <SingleComponent title={shows.name} poster={shows.poster_path} rating={shows.vote_average} release={shows.first_air_date} id={shows.id} />
                         </Link>
                     </div>
                 })}

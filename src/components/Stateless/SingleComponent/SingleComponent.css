@@ -1,8 +1,15 @@
 .component {
     margin: 2rem;
     color: #fff;
-    max-width: 200px;
+    height: 500px;
+    width: 300px;
     transition: transform .2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgb(41, 41, 41);
+    padding: .5rem;
+    border-radius: 10px;
 }
 
 .component:hover {
@@ -12,7 +19,6 @@
 }
 
 .component-img {
-    height: 295px;
     width: 100%;
     object-fit: contain;
     border-radius: 10px;
@@ -21,13 +27,13 @@
 }
 
 .component-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin: .5rem 0;
 }
 
 .component-release {
     color: grey;
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 @media screen and (max-width: 480px) {
