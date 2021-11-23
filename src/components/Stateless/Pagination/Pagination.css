@@ -1,0 +1,42 @@
+.pagination-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    margin: 1rem 0;
+    padding: 1rem 0;
+}
+
+.pagination-btn {
+    font-size: 2.5rem;
+}
+
+.pagination-btn:hover {
+    color: red;
+    transition: color .2s ease-in-out;
+}
+
+.page-dots {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.dot {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: grey;
+    margin: 0 .5rem;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: red;
+    box-shadow: 0 0 10px red;
+}
+
+.disabled {
+    pointer-events: none;
+    color: grey;
+}

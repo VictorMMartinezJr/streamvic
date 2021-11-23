@@ -18,7 +18,7 @@ const Navbar = ({ backgroundColor, position }) => {
     window.addEventListener('scroll', addNavBackground);
 
     return (
-        <div className={navBackground ? 'navbar active' : 'navbar'} style={{ position: position }}>
+        <div className={navBackground ? 'navbar active' : 'navbar'} style={{ position: position, backgroundColor: backgroundColor }}>
             <span className='title'>
                 <h1 className='name'>StreamVic</h1>
                 <img className='navbar-img' src={popcorn} alt="popcorn" />

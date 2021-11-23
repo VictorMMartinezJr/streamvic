@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react'
 import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
-// import useFetch from '../../../hooks/UseFetch';
 import './Content.css';
-// import '../../components/Search.css'
-// import { Pagination } from '@material-ui/lab';
-// import { createTheme } from '@material-ui/core';
-// import { ThemeProvider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
+import Pagination from '../../Stateless/Pagination/Pagination';
 
 
 
@@ -18,15 +14,7 @@ const Movies = () => {
     const [sort, setSort] = useState('popular');
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [numOfPages, setNumOfPages] = useState(true);
-    // const [sort, setSort] = useState('popular');
-    // const [sort, setSort] = useState('popular');
-    // const [sort, setSort] = useState('popular');
-    // const fetchData = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`;
 
-    // const { data: movies, isLoading, error, numOfPages } = useFetch(fetchMovies)
-    // const [searchPage, setSearchPage] = useState(false);
-    // const [showSearch] = useState(true);
 
     const fetchMovies = () => {
         fetch(`https://api.themoviedb.org/3/movie/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
@@ -38,8 +26,6 @@ const Movies = () => {
             })
             .then(data => {
                 setMovies(data.results);
-                setNumOfPages(data.total_pages);
-                // setSearchPage(false);
                 setIsLoading(false);
             })
             .catch(err => {
@@ -47,17 +33,6 @@ const Movies = () => {
                 setIsLoading(false);
             })
     }
-
-    // const searchMovies = (search) => {
-    //     fetch(`
-    //     https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}&page=1`)
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    //             setMovies(data.results);
-    //             setNumOfPages(data.total_pages)
-    //             setSearchPage(true)
-    //         })
-    // }
 
     useEffect(() => {
         fetchMovies();
@@ -67,16 +42,20 @@ const Movies = () => {
         // eslint-disable-next-line
     }, [page, sort])
 
-    // const darkTheme = createTheme({
-    //     palette: {
-    //         type: 'dark'
-    //     },
-    // })
+    // go to next page when next button is clicked on pagination
+    const handleNextPage = () => {
+        setPage(page + 1);
+    };
 
-    // const handlePageChange = (page) => {
-    //     setPage(page);
-    //     window.scroll(0, 0)
-    // }
+    // go to previous page when prev button is clicked on pagination
+    const handlePrevPage = () => {
+        setPage(page - 1);
+    };
+
+    // the index of the dot you click becomes the current page
+    const handleChoosePage = (pageNum) => {
+        setPage(pageNum);
+    };
 
 
     return (
@@ -94,11 +73,7 @@ const Movies = () => {
                     </div>
                 })}
             </div>
-            {/* {!isLoading && <span className={searchPage ? 'pagination hidden' : 'pagination'}>
-                {/* <ThemeProvider theme={darkTheme}>
-                    <Pagination count={numOfPages} color="secondary" onChange={(e) => handlePageChange(e.target.textContent)} showFirstButton showLastButton />
-                </ThemeProvider> */}
-
+            {!isLoading && !error && movies && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={5} />}
         </section>
     )
 }
