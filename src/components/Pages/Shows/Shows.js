@@ -8,16 +8,16 @@ import Pagination from '../../Stateless/Pagination/Pagination';
 
 
 
-const Movies = () => {
+const Shows = () => {
     const [page, setPage] = useState(1);
-    const [movies, setMovies] = useState([]);
+    const [shows, setShows] = useState([]);
     const [sort, setSort] = useState('popular');
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
 
     const fetchMovies = () => {
-        fetch(`https://api.themoviedb.org/3/movie/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
+        fetch(`https://api.themoviedb.org/3/tv/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
             .then(resp => {
                 if (!resp.ok) {
                     throw Error('could not fetch the data')
@@ -25,7 +25,7 @@ const Movies = () => {
                 return resp.json()
             })
             .then(data => {
-                setMovies(data.results);
+                setShows(data.results);
                 setIsLoading(false);
             })
             .catch(err => {
@@ -37,7 +37,7 @@ const Movies = () => {
     useEffect(() => {
         fetchMovies();
         return () => {
-            setMovies('')
+            setShows('')
         }
         // eslint-disable-next-line
     }, [page, sort])
@@ -65,7 +65,7 @@ const Movies = () => {
             <div className='content-data'>
                 {error && <div>{error}</div>}
                 {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
-                {!isLoading && !error && movies && movies.map(movie => {
+                {!isLoading && !error && shows && shows.map(movie => {
                     return <div key={movie.id}>
                         <Link to={`/moviedetails/${movie.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                             <SingleComponent title={movie.title} poster={movie.poster_path} rating={movie.vote_average} release={movie.release_date} id={movie.id} />
@@ -73,9 +73,9 @@ const Movies = () => {
                     </div>
                 })}
             </div>
-            {!isLoading && !error && movies && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={5} />}
+            {!isLoading && !error && shows && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={5} />}
         </section>
     )
 }
 
-export default Movies;
+export default Shows;

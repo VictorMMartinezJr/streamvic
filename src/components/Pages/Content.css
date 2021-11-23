@@ -21,14 +21,7 @@
     align-items: center;
     margin: 1rem;
     width: 100%;
-}
-
-.pagination {
-    margin-bottom: 1.5rem;
-}
-
-.pagination.hidden{
-    display: none;
+    background: #000;
 }
 
 @media screen and (max-width: 770px) {
