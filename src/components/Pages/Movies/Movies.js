@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
-import useFetch from '../../../hooks/UseFetch';
+// import useFetch from '../../../hooks/UseFetch';
 import './Content.css';
 // import '../../components/Search.css'
 // import { Pagination } from '@material-ui/lab';
@@ -14,31 +14,39 @@ import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
 
 const Movies = () => {
     const [page, setPage] = useState(1);
-    const fetchMovies = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`;
+    const [movies, setMovies] = useState([]);
+    const [sort, setSort] = useState('popular');
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [numOfPages, setNumOfPages] = useState(true);
+    // const [sort, setSort] = useState('popular');
+    // const [sort, setSort] = useState('popular');
+    // const [sort, setSort] = useState('popular');
+    // const fetchData = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`;
 
-    const { data: movies, isLoading, error, numOfPages } = useFetch(fetchMovies)
+    // const { data: movies, isLoading, error, numOfPages } = useFetch(fetchMovies)
     // const [searchPage, setSearchPage] = useState(false);
     // const [showSearch] = useState(true);
 
-    // const fetchMovies = () => {
-    //     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
-    //         .then(resp => {
-    //             if (!resp.ok) {
-    //                 throw Error('could not fetch the data')
-    //             }
-    //             return resp.json()
-    //         })
-    //         .then(data => {
-    //             setMovies(data.results);
-    //             setNumOfPages(data.total_pages);
-    //             setSearchPage(false);
-    //             setIsLoading(false);
-    //         })
-    //         .catch(err => {
-    //             setError(err.message);
-    //             setIsLoading(false);
-    //         })
-    // }
+    const fetchMovies = () => {
+        fetch(`https://api.themoviedb.org/3/movie/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
+            .then(resp => {
+                if (!resp.ok) {
+                    throw Error('could not fetch the data')
+                }
+                return resp.json()
+            })
+            .then(data => {
+                setMovies(data.results);
+                setNumOfPages(data.total_pages);
+                // setSearchPage(false);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                setError(err.message);
+                setIsLoading(false);
+            })
+    }
 
     // const searchMovies = (search) => {
     //     fetch(`
@@ -51,13 +59,13 @@ const Movies = () => {
     //         })
     // }
 
-    // useEffect(() => {
-    //     fetchMovies();
-    //     return () => {
-    //         setMovies('')
-    //     }
-    //     // eslint-disable-next-line
-    // }, [page])
+    useEffect(() => {
+        fetchMovies();
+        return () => {
+            setMovies('')
+        }
+        // eslint-disable-next-line
+    }, [page, sort])
 
     // const darkTheme = createTheme({
     //     palette: {
@@ -74,7 +82,7 @@ const Movies = () => {
     return (
         <section className='content-container'>
             <Navbar backgroundColor='#000' position='static' />
-            <FilterBtn />
+            <FilterBtn setSort={setSort} setPage={setPage} />
             <div className='content-data'>
                 {error && <div>{error}</div>}
                 {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}

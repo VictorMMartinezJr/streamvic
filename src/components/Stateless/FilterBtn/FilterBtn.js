@@ -1,23 +1,24 @@
 import './FilterBtn.css';
 import { useState } from 'react'
 
-const FilterBtn = () => {
+const FilterBtn = ({ filterChange, setSort, setPage }) => {
     const [showChoices, setShowChoices] = useState(false);
     const [title, setTitle] = useState('Popular');
-    const filterList = [
-        {
-            name: 'Popular',
-            value: 'popular',
-        },
-        {
-            name: 'Top Rated',
-            value: 'top_rated',
-        },
-        {
-            name: 'Latest',
-            value: 'latest',
-        },
-    ];
+
+    const handleFilter = (e) => {
+        const currentSelectedSort = e.target.value;
+        setSort(currentSelectedSort)
+        setPage(1);
+
+        switch (currentSelectedSort) {
+            case 'popular':
+                return setTitle('Popular');
+            case 'top_rated':
+                return setTitle('Top Rated');
+            default:
+                return setTitle('Popular');
+        }
+    }
 
     return (
         <span className='content-filter'>
@@ -25,11 +26,12 @@ const FilterBtn = () => {
             <div className='filter-dropdown' onClick={() => setShowChoices(!showChoices)}>
                 <button className='filter-btn'>Filter <i className="fas fa-caret-down"></i></button>
                 <div className={showChoices ? 'filter-dropdown-choices active' : 'filter-dropdown-choices'}>
-                    {filterList.map((item, i) => <span onClick={(e) => setTitle(item.name)} className='filter-span' key={i}>{item.name}</span>)}
+                    <option value="popular" onClick={handleFilter} className='filter-options'>Popular</option>
+                    <option value="top_rated" onClick={handleFilter} className='filter-options'>Top Rated</option>
                 </div>
             </div>
         </span>
     )
 }
 
-export default FilterBtn
+export default FilterBtn;

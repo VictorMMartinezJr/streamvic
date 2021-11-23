@@ -43,7 +43,7 @@
     pointer-events:all;
 }
 
-.filter-span {
+.filter-options {
     margin: .5rem 0;
     cursor: pointer;
     font-weight: 700;
