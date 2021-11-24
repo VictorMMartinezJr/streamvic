@@ -39,10 +39,14 @@
 
 .content-favorite-icon {
     position: absolute;
-    font-size: 1.5rem;
-    bottom: 5px;
-    right: 5px;
-    color: #00fff5
+    font-size: 2rem;
+    bottom:10px;
+    right: 20px;
+    color: red;
+}
+
+.content-favorite-icon.active {
+    font-weight: 700;
 }
 
 @media screen and (max-width: 480px) {

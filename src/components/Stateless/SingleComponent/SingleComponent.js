@@ -28,7 +28,7 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
                 </Link>
                 <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
             </div>
-            {favorites.some(content => content.id === id) ? <i className="fas fa-heart content-favorite-icon" onClick={RemoveFromFav}></i> : <i className="far fa-heart content-favorite-icon" onClick={addToFav}></i>}
+            {favorites.some(content => content.id === id) ? <i className="far fa-heart content-favorite-icon active" onClick={RemoveFromFav}></i> : <i className="far fa-heart content-favorite-icon" onClick={addToFav}></i>}
             <h3 className='component-title'>{title}</h3>
             <span className='component-release'>{release}</span>
         </div>

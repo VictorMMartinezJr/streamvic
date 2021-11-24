@@ -27,7 +27,7 @@ const Favorites = () => {
             <div className='content-data'>
                 {favorites.length < 1 && <div className='empty-favorites'>
                     <img src={heart} alt="heart" />
-                    <h1>Favorites Empty</h1>
+                    <h1>Favorites Empty Click the <i style={{ color: 'red' }} className="far fa-heart"></i> Icon To Add Here!</h1>
                 </div>}
                 {data && data.map(data => {
                     return <div key={data.id}>

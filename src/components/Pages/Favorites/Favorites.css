@@ -2,11 +2,12 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
 }
 
 .empty-favorites img {
-    height: 300px;
+    height: 250px;
+    margin: 1rem 0;
 }
 
 .empty-favorites h1{
