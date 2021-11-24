@@ -1,15 +1,16 @@
 .component {
     margin: 2rem;
     color: #fff;
-    height: 500px;
+    height: 530px;
     width: 300px;
     transition: transform .2s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     background: rgb(41, 41, 41);
-    padding: .5rem;
+    padding: 0 .5rem;
     border-radius: 10px;
+    position: relative;
 }
 
 .component:hover {
@@ -34,6 +35,14 @@
 .component-release {
     color: grey;
     font-size: 1rem;
+}
+
+.content-favorite-icon {
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 5px;
+    right: 5px;
+    color: #00fff5
 }
 
 @media screen and (max-width: 480px) {

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
 import '../../Pages/Content.css';
-import { Link } from 'react-router-dom';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
 import Pagination from '../../Stateless/Pagination/Pagination';
@@ -67,9 +66,7 @@ const Movies = () => {
                 {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
                 {!isLoading && !error && movies && movies.map(movie => {
                     return <div key={movie.id}>
-                        <Link to={`/moviedetails/${movie.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                            <SingleComponent title={movie.title} poster={movie.poster_path} rating={movie.vote_average} release={movie.release_date} id={movie.id} />
-                        </Link>
+                        <SingleComponent content={movie} title={movie.title} poster={movie.poster_path} rating={movie.vote_average} release={movie.release_date} id={movie.id} />
                     </div>
                 })}
             </div>

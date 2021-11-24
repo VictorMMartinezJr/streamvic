@@ -1,0 +1,16 @@
+.empty-favorites {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.empty-favorites img {
+    height: 300px;
+}
+
+.empty-favorites h1{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+}

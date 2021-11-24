@@ -68,9 +68,7 @@ const Shows = () => {
                 {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
                 {!isLoading && !error && shows && shows.map(shows => {
                     return <div key={shows.id}>
-                        <Link to={`/moviedetails/${shows.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                            <SingleComponent title={shows.name} poster={shows.poster_path} rating={shows.vote_average} release={shows.first_air_date} id={shows.id} />
-                        </Link>
+                        <SingleComponent content={shows} title={shows.name} poster={shows.poster_path} rating={shows.vote_average} release={shows.first_air_date} id={shows.id} />
                     </div>
                 })}
             </div>
