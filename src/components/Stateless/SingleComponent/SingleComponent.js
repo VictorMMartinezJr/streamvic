@@ -7,16 +7,24 @@ import { Link } from 'react-router-dom';
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
 const SingleComponent = ({ title, poster, rating, release, id, content }) => {
-    const { state: { favorites }, dispatch } = useContext(Favs);
+    const { favorites, setFavorites } = useContext(Favs);
+
+    const addToLocalStorage = (item) => {
+        localStorage.setItem('favs', JSON.stringify(item));
+    }
 
     // add movie/show to favorites
-    const addToFav = () => {
-        dispatch({ type: 'ADD-TO-FAV', payload: content });
+    const addToFav = (content) => {
+        const newFavsList = [...favorites, content];
+        addToLocalStorage(newFavsList)
+        setFavorites(newFavsList)
     }
 
     // remove movie/show from favorites
     const RemoveFromFav = () => {
-        dispatch({ type: 'REMOVE-FROM-FAV', payload: content });
+        const newFavsList = favorites.filter(fav => fav.id !== content.id)
+        addToLocalStorage(newFavsList)
+        setFavorites(newFavsList);
         console.log('removed')
     }
 
@@ -28,7 +36,7 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
                 </Link>
                 <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
             </div>
-            {favorites.some(content => content.id === id) ? <i className="far fa-heart content-favorite-icon active" onClick={RemoveFromFav}></i> : <i className="far fa-heart content-favorite-icon" onClick={addToFav}></i>}
+            {favorites && favorites.some(content => content.id === id) ? <i className="far fa-heart content-favorite-icon active" onClick={() => RemoveFromFav(content)}></i> : <i className="far fa-heart content-favorite-icon" onClick={() => addToFav(content)}></i>}
             <h3 className='component-title'>{title}</h3>
             <span className='component-release'>{release}</span>
         </div>

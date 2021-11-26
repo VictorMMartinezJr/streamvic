@@ -9,6 +9,7 @@ import Pagination from '../../Stateless/Pagination/Pagination';
 const Search = () => {
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
+    const [submittedForm, setSubmittedForm] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -62,7 +63,7 @@ const Search = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         SearchData()
-        console.log(data)
+        setSubmittedForm(true)
     }
 
 
@@ -89,7 +90,7 @@ const Search = () => {
                         </div>
                     })}
                 </div>
-                {!isLoading && !error && searchTerm && data && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={5} />}
+                {!isLoading && !error && submittedForm && data && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={5} dataLength={data.length} />}
             </section>
         </>
     )

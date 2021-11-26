@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
 import '../../Pages/Content.css';
-import { Link } from 'react-router-dom';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
 import Pagination from '../../Stateless/Pagination/Pagination';

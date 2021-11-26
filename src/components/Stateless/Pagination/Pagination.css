@@ -40,3 +40,7 @@
     pointer-events: none;
     color: grey;
 }
+
+.pagination-container.hide {
+    display: none;
+}

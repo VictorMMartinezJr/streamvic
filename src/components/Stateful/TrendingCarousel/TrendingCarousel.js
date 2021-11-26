@@ -1,12 +1,9 @@
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import './TrendingCarousel.css';
-import { Link } from 'react-router-dom';
 import unavaliable from '../../../assets/photo-unavaliable.png';
 import useFetch from '../../../hooks/UseFetch';
-
-// baseURL for images
-const imgUrl = 'https://image.tmdb.org/t/p/original';
+import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
 
 // fetch trending movies url
 const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -16,15 +13,10 @@ const TrendingCarousel = ({ title }) => {
 
     // items in carousel
     const items = data.map(data => {
-        return <div className='img-container'>
-            <Link to={`/moviedetails/${data.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                <div className='trending-img-container'>
-                    <img className='trending-carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
-                    <p className='trending-movie-rating' style={{ color: data.vote_average >= 8 ? 'green' : 'orange' }}>{data?.vote_average > 0 ? data?.vote_average : 'n/a'}</p>
-                    <i class="far fa-heart trending-movie-favorite"></i>
-                </div>
-            </Link>
-            <h4>{data?.name || data?.title}</h4>
+        return <div className='content-data'>
+            <div key={data.id}>
+                <SingleComponent content={data} title={data.title || data.name} poster={data.poster_path || unavaliable} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />
+            </div>
         </div>
     })
 

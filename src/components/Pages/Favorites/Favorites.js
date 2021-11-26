@@ -7,11 +7,9 @@ import { useContext } from 'react';
 import { Favs } from '../../../context/GlobalContext'
 import heart from '../../../assets/heart.png'
 
-
-
 const Favorites = () => {
     const [data, setData] = useState([]);
-    const { state: { favorites } } = useContext(Favs);
+    const { favorites } = useContext(Favs);
 
     useEffect(() => {
         setData(favorites);

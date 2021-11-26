@@ -5,7 +5,8 @@ import "swiper/swiper-bundle.css";
 import Navbar from '../Navbar/Navbar';
 import { IoIosStar } from 'react-icons/io';
 import imdb from '../../../assets/imdb.png';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { Favs } from '../../../context/GlobalContext';
 
 // beginning of url for tmdb images
 const img = 'https://image.tmdb.org/t/p/original';
@@ -22,6 +23,7 @@ const truncate = (str, n) => {
 }
 
 const HomeCarousel = () => {
+    const { favorites } = useContext(Favs)
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -48,6 +50,7 @@ const HomeCarousel = () => {
         fetchData();
         // eslint-disable-next-line
     }, [])
+
 
     return (
         <div className='home-carousel'>
@@ -79,14 +82,16 @@ const HomeCarousel = () => {
                                     </div>
                                     <div className='carousel-item-buttons'>
                                         <button className='carousel-item-button-home'><i className="fas fa-play"></i>Watch Now</button>
-                                        <button className='carousel-item-button-secondary'><i className="far fa-heart"></i>Add To Favorites</button>
+
+                                        {favorites.some(mov => mov === movie) ? <button className='carousel-item-button-secondary'><i className="fas fa-heart"></i>Remove From Favorites</button> : <button className='carousel-item-button-secondary'><i className="far fa-heart"></i>Add To Favorites</button>}
+
                                     </div>
                                 </div>
                             </div>)}
                     </SwiperSlide>
                 })}
             </Swiper>}
-        </div>
+        </div >
     )
 }
 
