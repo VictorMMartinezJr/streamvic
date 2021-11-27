@@ -22,8 +22,9 @@
 
 .search-title {
     color: #fff;
-    font-size: 5rem;
-    width: 55%;
+    font-size: 4rem;
+    margin: 1rem 0;
+    text-shadow: 0 0 10px #000;
 }
 
 .search-form {
@@ -31,15 +32,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 90%;
+    padding: 1rem 0;
 }
 
-.search-form input {
+.search-input-container {
+    position: relative;
+}
+
+.search-input {
     font-size: 2rem;
     border: none;
     border-radius: 5px;
     margin: 0 1rem;
     padding: 0 .5rem;
     outline: none;
+}
+
+.search-error-message {
+    position: absolute;
+    font-size: 1.3rem;
+    color: red;
+    width: 100%;
+    margin: auto;
+    margin-top: .5rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #000;
+    font-weight: 700;
+}
+
+.form-span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-form button {
@@ -52,4 +77,49 @@
     color: #fff;
     padding: .2rem 1rem;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1280px) {
+    .search-title {
+        color: #fff;
+        font-size: 3rem;
+        margin-top: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .search-input {
+        font-size: 1.5rem;
+    }
+
+    .search-form button {
+        font-size: 1.5rem;
+    }
+
+    .search-title {
+        color: #fff;
+        font-size: 3rem;
+    }
+
+    .search-error-message {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .search-title {
+        color: #fff;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .search-input {
+        width: 90%;
+    }
+    .search-title {
+        color: #fff;
+        font-size: 1.5rem;
+    }
 }

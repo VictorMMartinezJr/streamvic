@@ -31,7 +31,7 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
     return (
         <div className='component'>
             <div className='component-data'>
-                <div className='trending-img-container'>
+                <div className='component-img-container'>
                     <Link to={`/moviedetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                         <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
                     </Link>
