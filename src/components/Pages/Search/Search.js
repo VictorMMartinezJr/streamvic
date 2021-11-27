@@ -34,7 +34,6 @@ const Search = () => {
         searchTerm = searchTerm.trim();
 
         if (searchTerm === '') {
-            setData(null);
             setSearchInputError(
                 'Search Term is Empty'
             );
@@ -47,8 +46,8 @@ const Search = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSearched(true);
         searchData(searchTerm);
-        setSearched(true)
     }
 
     const displayEmptyResultMsg = () => {
@@ -63,9 +62,6 @@ const Search = () => {
         }
     };
 
-    console.log(data)
-
-
     return (
         <>
             <Navbar backgroundColor='#000' position='static' />
@@ -77,7 +73,7 @@ const Search = () => {
                             <input className='search-input' type="text" placeholder='Search' value={searchTerm} onChange={(e) => {
                                 setSearchTerm(e.target.value);
                             }} />
-                            {searched && displayEmptyResultMsg()}
+                            {searched && data && displayEmptyResultMsg()}
                         </div>
                         <button type='submit'>Search</button>
                     </span>

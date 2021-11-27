@@ -123,3 +123,19 @@
         font-size: 1.5rem;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .form-span {
+        flex-direction: column;
+    }
+
+    .search-input {
+        width: 95%;
+        margin: 0 0 2rem 0;
+    }
+
+    .search-error-message {
+        position: absolute;
+        bottom: 10px;
+    }
+}

@@ -6,6 +6,7 @@ import Shows from './components/Pages/Shows/Shows';
 import GlobalContext from './context/GlobalContext';
 import Favorites from './components/Pages/Favorites/Favorites';
 import Search from './components/Pages/Search/Search';
+import Details from './components/Pages/Details/Details';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route path='/search'>
               <Search />
+            </Route>
+            <Route path='/moviedetails/:id'>
+              <Details />
             </Route>
           </Switch>
         </GlobalContext>

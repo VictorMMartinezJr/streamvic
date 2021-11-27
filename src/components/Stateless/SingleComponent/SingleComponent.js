@@ -32,7 +32,7 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
         <div className='component'>
             <div className='component-data'>
                 <div className='component-img-container'>
-                    <Link to={`/moviedetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
+                    <Link to={content === 'shows' ? `/showsdetails/${id}` : `/moviedetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>tdhhdt
                         <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
                     </Link>
                     <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
