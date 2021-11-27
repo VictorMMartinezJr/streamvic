@@ -5,8 +5,7 @@ import "swiper/swiper-bundle.css";
 import Navbar from '../Navbar/Navbar';
 import { IoIosStar } from 'react-icons/io';
 import imdb from '../../../assets/imdb.png';
-import { useState, useEffect, useContext } from 'react'
-import { Favs } from '../../../context/GlobalContext';
+import { useState, useEffect } from 'react'
 
 // beginning of url for tmdb images
 const img = 'https://image.tmdb.org/t/p/original';
@@ -23,7 +22,6 @@ const truncate = (str, n) => {
 }
 
 const HomeCarousel = () => {
-    const { favorites } = useContext(Favs)
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -51,10 +49,9 @@ const HomeCarousel = () => {
         // eslint-disable-next-line
     }, [])
 
-
     return (
         <div className='home-carousel'>
-            <Navbar backgroundColor='transparent' position='fixed' />
+            <Navbar position='fixed' />
             {error && <div>{error}</div>}
             {isLoading && <div className='loading-message'>Loading...</div>}
             {!isLoading && !error && <Swiper
@@ -81,17 +78,14 @@ const HomeCarousel = () => {
                                         <img className='imdb-logo' src={imdb} alt="imdb" />
                                     </div>
                                     <div className='carousel-item-buttons'>
-                                        <button className='carousel-item-button-home'><i className="fas fa-play"></i>Watch Now</button>
-
-                                        {favorites.some(mov => mov === movie) ? <button className='carousel-item-button-secondary'><i className="fas fa-heart"></i>Remove From Favorites</button> : <button className='carousel-item-button-secondary'><i className="far fa-heart"></i>Add To Favorites</button>}
-
+                                        <button className='carousel-item-button-home'><i className="fas fa-arrow-right"></i>Learn More</button>
                                     </div>
                                 </div>
                             </div>)}
                     </SwiperSlide>
                 })}
             </Swiper>}
-        </div >
+        </div>
     )
 }
 

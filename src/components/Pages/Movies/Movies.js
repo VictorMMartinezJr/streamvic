@@ -1,10 +1,9 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
 import '../../Pages/Content.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
 import Pagination from '../../Stateless/Pagination/Pagination';
-import { Favs } from '../../../context/GlobalContext'
 
 
 
@@ -14,7 +13,6 @@ const Movies = () => {
     const [sort, setSort] = useState('popular');
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const { setFavorites } = useContext(Favs)
 
 
     const fetchMovies = () => {
@@ -34,13 +32,6 @@ const Movies = () => {
                 setIsLoading(false);
             })
     }
-
-    useEffect(() => {
-        const movieFavorites = JSON.parse(localStorage.getItem('favs'));
-        setFavorites(movieFavorites);
-        // eslint-disable-next-line
-    }, [])
-
 
     useEffect(() => {
         fetchMovies();

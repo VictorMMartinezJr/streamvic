@@ -49,13 +49,18 @@
     font-weight: 700;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 350px) {
     .component {
-        margin: 1rem .5rem;
-        width: 150px;
+        margin: 2rem;
+        height: 500px;
+        width: 250px;
     }
+}
 
-    .component-img {
-        height: 200px;
+@media screen and (max-width: 300px) {
+    .component {
+        margin: 2rem;
+        height: 450px;
+        width: 200px;
     }
 }

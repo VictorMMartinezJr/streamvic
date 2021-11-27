@@ -15,18 +15,38 @@
 }
 
 .content-data {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-content: center;
     margin: 1rem;
     width: 100%;
     background: #000;
 }
 
+@media screen and (max-width: 1280px) {
+    .content-data{
+    grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .content-data{
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 770px) {
     .content-nav ul{
         flex: 1;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .content-data{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

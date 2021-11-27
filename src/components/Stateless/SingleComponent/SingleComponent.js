@@ -21,7 +21,7 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
     }
 
     // remove movie/show from favorites
-    const RemoveFromFav = () => {
+    const removeFromFav = () => {
         const newFavsList = favorites.filter(fav => fav.id !== content.id)
         addToLocalStorage(newFavsList)
         setFavorites(newFavsList);
@@ -30,15 +30,17 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
 
     return (
         <div className='component'>
-            <div className='trending-img-container'>
-                <Link to={`/moviedetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                    <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
-                </Link>
-                <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
+            <div className='component-data'>
+                <div className='trending-img-container'>
+                    <Link to={`/moviedetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
+                        <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
+                    </Link>
+                    <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
+                </div>
+                {favorites && favorites.some(content => content.id === id) ? <i className="far fa-heart content-favorite-icon active" onClick={() => removeFromFav(content)}></i> : <i className="far fa-heart content-favorite-icon" onClick={() => addToFav(content)}></i>}
+                <h3 className='component-title'>{title}</h3>
+                <span className='component-release'>{release}</span>
             </div>
-            {favorites && favorites.some(content => content.id === id) ? <i className="far fa-heart content-favorite-icon active" onClick={() => RemoveFromFav(content)}></i> : <i className="far fa-heart content-favorite-icon" onClick={() => addToFav(content)}></i>}
-            <h3 className='component-title'>{title}</h3>
-            <span className='component-release'>{release}</span>
         </div>
     )
 }

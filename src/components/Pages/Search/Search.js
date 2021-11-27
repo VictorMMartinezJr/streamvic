@@ -90,7 +90,6 @@ const Search = () => {
                         </div>
                     })}
                 </div>
-                {!isLoading && !error && submittedForm && data && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={5} dataLength={data.length} />}
             </section>
         </>
     )

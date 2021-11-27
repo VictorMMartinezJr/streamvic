@@ -23,7 +23,7 @@
 }
 
 .carousel-item-poster {
-    height: 43rem;
+    height: 35rem;
     object-fit: contain;
     margin: 0 1rem;
     border-radius: 10px;
@@ -151,7 +151,7 @@
 
 @media screen and (max-width: 768px) {
     .carousel-item-poster {
-        height: 30rem;
+        height: 35rem;
     }
 
     .carousel-item-info {

@@ -48,3 +48,30 @@
     cursor: pointer;
     font-weight: 700;
 }
+
+@media screen and (max-width: 500px) {
+    .filter-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+} 
+
+
+@media screen and (max-width: 350px) {
+    .filter-title {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .filter-btn {
+        font-size: 1rem;
+    }
+
+    .filter-btn i {
+        font-size: 1rem;
+    }
+
+    .filter-dropdown-choices {
+        font-size: 1rem;
+    }
+} 

@@ -1,26 +1,54 @@
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import { useState, useEffect } from 'react';
 import './TrendingCarousel.css';
-import unavaliable from '../../../assets/photo-unavaliable.png';
-import useFetch from '../../../hooks/UseFetch';
-import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
+import { Link } from 'react-router-dom';
 
-// fetch trending movies url
-const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
+// BaseURL for images
+const imgUrl = 'https://image.tmdb.org/t/p/original';
+const unavaliable = 'https://mychildsafetyinstitute.org/wp-content/uploads/2014/07/Profile-Photo-Unavailable.png';
 
-const TrendingCarousel = ({ title }) => {
-    const { data, isLoading, error } = useFetch(fetchTrending);
+const Carousel = ({ url, title }) => {
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // items in carousel
+    // Fetch Trending Movies & setMovies
+    const fetchData = () => {
+        fetch(url)
+            .then(resp => {
+                if (!resp.ok) {
+                    throw Error('Could not fetch the data for the resource');
+                }
+                return resp.json()
+            })
+            .then(data => {
+                setData(data.results || data.cast);
+                setIsLoading(false)
+            })
+            .catch(err => {
+                setError(err.message);
+                setIsLoading(false);
+            })
+    }
+
+    // Call FetchTrending
+    useEffect(() => {
+        fetchData();
+        // eslint-disable-next-line
+    }, [])
+
+    // Items in carousel
     const items = data.map(data => {
-        return <div className='content-data'>
-            <div key={data.id}>
-                <SingleComponent content={data} title={data.title || data.name} poster={data.poster_path || unavaliable} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />
-            </div>
+        return <div className='img-container'>
+            <Link to={`/moviedetails/${data.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
+                <img className='carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
+            </Link>
+            <h4>{data?.name || data?.title}</h4>
         </div>
     })
 
-    // carousel responsiveness
+    // Carousel Responsiveness
     const responsive = {
         0: {
             items: 1,
@@ -36,11 +64,11 @@ const TrendingCarousel = ({ title }) => {
         }
     }
 
-    // carousel next button
+    // Next/Previous Buttons
     const renderNextButton = () => {
         return <i className="fas fa-arrow-right"></i>
     }
-    // carousel previous button
+
     const renderPrevButton = () => {
         return <i className="fas fa-arrow-left"></i>
     }
@@ -56,4 +84,4 @@ const TrendingCarousel = ({ title }) => {
     );
 }
 
-export default TrendingCarousel;
+export default Carousel;
