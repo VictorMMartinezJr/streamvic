@@ -25,14 +25,13 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
         const newFavsList = favorites.filter(fav => fav.id !== content.id)
         addToLocalStorage(newFavsList)
         setFavorites(newFavsList);
-        console.log('removed')
     }
 
     return (
         <div className='component'>
             <div className='component-data'>
                 <div className='component-img-container'>
-                    <Link to={content === 'shows' ? `/showsdetails/${id}` : `/moviedetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>tdhhdt
+                    <Link to={`/moviedetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                         <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
                     </Link>
                     <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>

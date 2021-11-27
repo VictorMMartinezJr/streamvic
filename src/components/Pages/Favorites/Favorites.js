@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
+import SingleComponent from '../../Stateless/SingleComponent/MovieSingleComponent';
 import '../../Pages/Content.css';
 import './Favorites.css'
 import Navbar from '../../Stateful/Navbar/Navbar';

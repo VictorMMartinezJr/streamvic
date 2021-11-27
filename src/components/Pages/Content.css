@@ -24,6 +24,10 @@
     background: #000;
 }
 
+.movie-component {
+    position: relative;
+}
+
 @media screen and (max-width: 1280px) {
     .content-data{
     grid-template-columns: repeat(3, 1fr);

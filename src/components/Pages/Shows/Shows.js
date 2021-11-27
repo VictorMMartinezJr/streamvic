@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
+import ShowSingleComponent from '../../Stateless/SingleComponent/ShowSingleComponent';
 import '../../Pages/Content.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
@@ -67,7 +67,7 @@ const Shows = () => {
                 {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
                 {!isLoading && !error && shows && shows.map(shows => {
                     return <div key={shows.id}>
-                        <SingleComponent content={shows} title={shows.name} poster={shows.poster_path} rating={shows.vote_average} release={shows.first_air_date} id={shows.id} />
+                        <ShowSingleComponent content={shows} title={shows.name} poster={shows.poster_path} rating={shows.vote_average} release={shows.first_air_date} id={shows.id} />
                     </div>
                 })}
             </div>

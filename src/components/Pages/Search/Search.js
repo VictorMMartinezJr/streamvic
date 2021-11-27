@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SingleComponent from '../../Stateless/SingleComponent/SingleComponent';
+import SingleComponent from '../../Stateless/SingleComponent/MovieSingleComponent';
 import './Search.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 
