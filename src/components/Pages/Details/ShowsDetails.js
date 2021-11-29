@@ -6,11 +6,13 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './Details.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import TvTrailer from '../../Stateful/TvTrailer/TvTrailer';
+import FavsBtn from '../../Stateless/FavsBtn'
+
 
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
-const ShowsDetails = () => {
+const ShowDetails = () => {
     const [showDetails, setShowDetails] = useState({});
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +20,6 @@ const ShowsDetails = () => {
 
     const fetchContent = () => {
         fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-
             .then(resp => {
                 if (!resp.ok) {
                     throw Error('could not fetch the data')
@@ -33,16 +34,19 @@ const ShowsDetails = () => {
                 setError(err.message);
                 setIsLoading(false);
             })
+
     }
 
     useEffect(() => {
         fetchContent();
         // eslint-disable-next-line
-    }, [])
+    }, [id])
 
     const value = showDetails.vote_average;
 
     const truncate = (str, n) => str?.length > n ? str.substring(0, n - 1) + '...' : str;
+
+
 
     return (
         <div
@@ -53,34 +57,46 @@ const ShowsDetails = () => {
                 backgroundPosition: 'center',
 
             }}>
-            <Navbar />
+            <Navbar position='static' />
             {error && <div>{error}</div>}
             {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
             {!isLoading && !error && <div className='details-main'>
-                <img className='details-poster' src={`${imgUrl}${showDetails.poster_path}`} alt="" />
                 <div className='details-main-info'>
-                    <h1 className='details-title'>{showDetails.name}</h1>
-                    <p className='details-overview'>{truncate(showDetails.overview, 300)}</p>
-                    <span className='details-span'>
-                        <div className='gauge'>
-                            <CircularProgressbar value={value} maxValue={10} text={value ? `${value}` : ''} styles={buildStyles({
-                                trailColor: 'transparent',
-                                textColor: '#fff',
-                                pathColor: '#fff'
-                            })} />
-                            <h3 className='gauge-rating'>Rating</h3>
+                    <img className='details-poster' src={`${imgUrl}${showDetails.poster_path}`} alt={showDetails.name} />
+                    <div className='details-main-info-text'>
+                        <h1 className='details-title'>{showDetails.title}</h1>
+                        <p className='details-overview'>{truncate(showDetails.overview, 300)}</p>
+                        <div className='details-genres'>
+                            <h1>Genres</h1>
+                            <span>
+                                {showDetails.genres.map((genre, i) => <h3 key={i}>{genre.name}</h3>)}
+                            </span>
+
                         </div>
-                        <button className='details-btn'><a href={showDetails.homepage} style={{ textDecoration: 'none', color: '#fff' }}>Watch Now</a></button>
-                        <TvTrailer id={id} />
-                    </span>
+                        <div className='gauge-container'>
+                            <div className='gauge'>
+                                <CircularProgressbar value={value} maxValue={10} text={value ? `${value}` : ''} styles={buildStyles({
+                                    trailColor: "transparent",
+                                    textColor: '#fff',
+                                    pathColor: '#fff'
+                                })} />
+                                <h3 className='gauge-rating'>Rating</h3>
+                            </div>
+                            <FavsBtn content={showDetails} className='details' />
+                        </div>
+                    </div>
                 </div>
             </div>}
+            <span className='details-trailer'>
+                <h1 className='trailer-h1'>Watch Trailer</h1>
+                <TvTrailer id={id} />
+            </span>
 
             <div className='details-cast'>
-                <DetailsCarousel url={`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`} title={'Cast'} />
+                <DetailsCarousel url={`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`} title={'Cast'} />
             </div>
         </div>
     )
 }
 
-export default ShowsDetails;
+export default ShowDetails;

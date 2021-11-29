@@ -47,7 +47,7 @@
   .details-genres {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 60%;
   }
 
   .details-genres h1{
@@ -60,7 +60,6 @@
     align-items: center;
   }
   
-  
   .gauge {
     display: flex;
     flex-direction: column;
@@ -68,12 +67,29 @@
     margin-top: 1rem;
     width: 120px;
     height: 120px;
+    position: relative;
   }
   
   .gauge-rating {
     color: #fff;
     font-weight: 400;
     margin-top: 0.5rem;
+  }
+
+  .gauge-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+  }
+
+  .details-favorite-icon {
+    color: red;
+    font-size: 4rem;
+  }
+
+  .details-favorite-icon.active {
+    font-weight: 700;
   }
   
   .details-poster {
@@ -89,6 +105,11 @@
       align-items: center;
       height: auto;
       width: 100%;
+  }
+
+  .trailer {
+    height: 300px;
+    width: 700px;
   }
 
   .trailer-h1 {
@@ -126,6 +147,7 @@
   @media screen and (max-width: 1280px) {
     .details-main-info {
       height: 400px;
+      width: 95%;
     }
   
     .details-poster {
@@ -142,7 +164,6 @@
   @media screen and (max-width: 768px) {
 
     .details-main-info {
-      width: 100%;
       margin-left: 1rem;
     }
   
@@ -154,7 +175,11 @@
       font-size: 1.2rem;
       width: 95%;
     }
-  
+
+    .details-genres {
+      width: 60%;
+    }
+
   }
   
   @media screen and (max-width: 540px) {
@@ -169,8 +194,9 @@
 
     .trailer {
       height: 300px;
-      width: 100%;
+      width: 500px;
     }
+
     .details-main-info {
       height: auto;
       margin-left: 0;
@@ -191,13 +217,28 @@
       width: 100%;
       padding: 0 .5rem;
     }
+
+    .details-title {
+      margin-bottom: 1rem;
+    }
+
+    .details-genres {
+      align-items: center;
+      width: 100%;
+      margin: 2rem 0;
+    }
+
+    .details-genres span {
+      width: 70%;
+    }
+
+    .gauge-container {
+      align-self: center;
+    }
+
   }
   
   @media screen and (max-width: 500px) {
-    .details-container {
-      height: auto;
-    }
-  
     .details-main-info {
       margin-bottom: 0;
     }
@@ -207,6 +248,10 @@
       height: 120px;
       align-self: center;
     }
+
+    .trailer {
+      width: 100%;
+    }
   
   }
   
@@ -214,6 +259,10 @@
     .details-btn {
       font-size: 1rem;
       padding: 1rem ;
+    }
+
+    .details-genres span {
+      width: 95%;
     }
   }
   

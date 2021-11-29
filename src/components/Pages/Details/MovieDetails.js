@@ -12,7 +12,7 @@ import FavsBtn from '../../Stateless/FavsBtn'
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
-const Details = () => {
+const MoviesDetails = () => {
     const [movieDetails, setMovieDetails] = useState({});
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -69,17 +69,20 @@ const Details = () => {
                         <div className='details-genres'>
                             <h1>Genres</h1>
                             <span>
-                                {movieDetails.genres.map(genre => <h3>{genre.name}</h3>)}
+                                {movieDetails.genres.map((genre, i) => <h3 key={i}>{genre.name}</h3>)}
                             </span>
-                            <FavsBtn content={movieDetails} />
+
                         </div>
-                        <div className='gauge'>
-                            <CircularProgressbar value={value} maxValue={10} text={value ? `${value}` : ''} styles={buildStyles({
-                                trailColor: "transparent",
-                                textColor: '#fff',
-                                pathColor: '#fff'
-                            })} />
-                            <h3 className='gauge-rating'>Rating</h3>
+                        <div className='gauge-container'>
+                            <div className='gauge'>
+                                <CircularProgressbar value={value} maxValue={10} text={value ? `${value}` : ''} styles={buildStyles({
+                                    trailColor: "transparent",
+                                    textColor: '#fff',
+                                    pathColor: '#fff'
+                                })} />
+                                <h3 className='gauge-rating'>Rating</h3>
+                            </div>
+                            <FavsBtn content={movieDetails} className='details' />
                         </div>
                     </div>
                 </div>
@@ -96,4 +99,4 @@ const Details = () => {
     )
 }
 
-export default Details;
+export default MoviesDetails;

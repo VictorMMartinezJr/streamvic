@@ -20,14 +20,9 @@ const TvTrailer = ({ id }) => {
         // eslint-disable-next-line
     }, [])
 
-    const opts = {
-        height: '300',
-        width: '100%'
-    }
-
     return (
         <div>
-            {trailerKey && <YouTube videoId={trailerKey} opts={opts} />}
+            {trailerKey && <YouTube videoId={trailerKey} className='trailer' />}
         </div>
     )
 }

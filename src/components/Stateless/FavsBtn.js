@@ -32,13 +32,13 @@ const FavsBtn = ({ content, className, checkFav }) => {
     }
 
     return (
-        <div className={`favs-btn ${className}`}>
+        <>
             {!checkFav || isFav(content.id) ? (
-                <i className="far fa-heart content-favorite-icon active" onClick={() => removeFromFav(content)}></i>
+                <i className={`far fa-heart ${className}-favorite-icon active`} onClick={() => removeFromFav(content)}></i>
             ) : (
-                <i className="far fa-heart content-favorite-icon" onClick={() => addToFav(content)}></i>
+                <i className={`far fa-heart ${className}-favorite-icon`} onClick={() => addToFav(content)}></i>
             )}
-        </div>
+        </>
     );
 };
 
