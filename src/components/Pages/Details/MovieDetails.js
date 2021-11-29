@@ -6,6 +6,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './Details.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import MovieTrailer from '../../Stateful/MovieTrailers/MovieTrailer';
+import FavsBtn from '../../Stateless/FavsBtn'
 
 
 
@@ -46,6 +47,7 @@ const Details = () => {
     const truncate = (str, n) => str?.length > n ? str.substring(0, n - 1) + '...' : str;
 
 
+
     return (
         <div
             className='details-container'
@@ -55,15 +57,22 @@ const Details = () => {
                 backgroundPosition: 'center',
 
             }}>
-            <Navbar />
+            <Navbar position='static' />
             {error && <div>{error}</div>}
             {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
             {!isLoading && !error && <div className='details-main'>
-                <img className='details-poster' src={`${imgUrl}${movieDetails.poster_path}`} alt={movieDetails.name} />
                 <div className='details-main-info'>
-                    <h1 className='details-title'>{movieDetails.title}</h1>
-                    <p className='details-overview'>{truncate(movieDetails.overview, 300)}</p>
-                    <span className='details-span'>
+                    <img className='details-poster' src={`${imgUrl}${movieDetails.poster_path}`} alt={movieDetails.name} />
+                    <div className='details-main-info-text'>
+                        <h1 className='details-title'>{movieDetails.title}</h1>
+                        <p className='details-overview'>{truncate(movieDetails.overview, 300)}</p>
+                        <div className='details-genres'>
+                            <h1>Genres</h1>
+                            <span>
+                                {movieDetails.genres.map(genre => <h3>{genre.name}</h3>)}
+                            </span>
+                            <FavsBtn content={movieDetails} />
+                        </div>
                         <div className='gauge'>
                             <CircularProgressbar value={value} maxValue={10} text={value ? `${value}` : ''} styles={buildStyles({
                                 trailColor: "transparent",
@@ -72,11 +81,13 @@ const Details = () => {
                             })} />
                             <h3 className='gauge-rating'>Rating</h3>
                         </div>
-                        <button className='details-btn'><a href={movieDetails.homepage} style={{ textDecoration: 'none', color: '#fff' }}>Watch Now</a></button>
-                        <MovieTrailer id={id} />
-                    </span>
+                    </div>
                 </div>
             </div>}
+            <span className='details-trailer'>
+                <h1 className='trailer-h1'>Watch Trailer</h1>
+                <MovieTrailer id={id} />
+            </span>
 
             <div className='details-cast'>
                 <DetailsCarousel url={`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`} title={'Cast'} />

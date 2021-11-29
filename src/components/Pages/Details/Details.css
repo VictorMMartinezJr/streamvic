@@ -1,29 +1,38 @@
 .details-container {
-    height: 100vh;
+    min-height: 100vh;
     background-position: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     background-blend-mode: multiply;
     color: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   
   .details-main {
-    height: 50vh;
+    min-height:55vh;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5rem;
   }
   
   .details-main-info {
     height: 450px;
     width: 60%;
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     margin-left: 2rem;
+  }
+
+  .details-main-info-text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 1rem;
   }
   
   .details-title {
@@ -34,14 +43,31 @@
     font-size: 1.5rem;
     width: 90%;
   }
+
+  .details-genres {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+
+  .details-genres h1{
+    margin-bottom: .5rem;
+  }
+
+  .details-genres span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
   
   .gauge {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
   
   .gauge-rating {
@@ -56,11 +82,29 @@
     box-shadow: 0 0 20px #000;
   }
   
-  .details-span {
+  .details-trailer {
       display: flex;
-      justify-content: flex-start;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      height: auto;
+      width: 100%;
   }
+
+  .trailer-h1 {
+    margin: 1rem 0;
+    position: relative;
+  }
+
+  .trailer-h1:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    background: #fff;
+    height: 3px;
+    width: 100%;
+}
   
   .details-btn {
       padding: 1rem 3rem;
@@ -96,10 +140,7 @@
   }
   
   @media screen and (max-width: 768px) {
-    .details-main {
-      margin-bottom: 2rem;
-    }
-  
+
     .details-main-info {
       width: 100%;
       margin-left: 1rem;
@@ -120,10 +161,15 @@
     .details-container {
       height: auto;
     }
-    .details-main {
+    .details-main-info {
       height: auto;
       flex-direction: column;
       text-align: center;
+    }
+
+    .trailer {
+      height: 300px;
+      width: 100%;
     }
     .details-main-info {
       height: auto;
@@ -159,6 +205,7 @@
     .gauge {
       width: 120px;
       height: 120px;
+      align-self: center;
     }
   
   }

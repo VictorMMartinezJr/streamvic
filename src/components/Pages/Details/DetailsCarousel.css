@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 15vh;
+    height: auto;
   }
   
   .details-slider-title {
@@ -55,10 +55,6 @@
   }
 
   @media screen and (max-width: 1000px) {
-    .details-slider-section {
-        height: 25vh;
-      }
-
     .details-carousel-img {
         height: 200px;
       }
