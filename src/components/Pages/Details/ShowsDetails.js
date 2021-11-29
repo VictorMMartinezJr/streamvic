@@ -5,6 +5,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './Details.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
+import TvTrailer from '../../Stateful/TvTrailer/TvTrailer';
 
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -70,6 +71,7 @@ const ShowsDetails = () => {
                             <h3 className='gauge-rating'>Rating</h3>
                         </div>
                         <button className='details-btn'><a href={showDetails.homepage} style={{ textDecoration: 'none', color: '#fff' }}>Watch Now</a></button>
+                        <TvTrailer id={id} />
                     </span>
                 </div>
             </div>}

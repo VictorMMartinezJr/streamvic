@@ -5,6 +5,8 @@ import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './Details.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
+import MovieTrailer from '../../Stateful/MovieTrailers/MovieTrailer';
+
 
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -43,8 +45,6 @@ const Details = () => {
 
     const truncate = (str, n) => str?.length > n ? str.substring(0, n - 1) + '...' : str;
 
-    console.log(movieDetails)
-
 
     return (
         <div
@@ -73,6 +73,7 @@ const Details = () => {
                             <h3 className='gauge-rating'>Rating</h3>
                         </div>
                         <button className='details-btn'><a href={movieDetails.homepage} style={{ textDecoration: 'none', color: '#fff' }}>Watch Now</a></button>
+                        <MovieTrailer id={id} />
                     </span>
                 </div>
             </div>}
