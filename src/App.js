@@ -8,10 +8,16 @@ import Favorites from './components/Pages/Favorites/Favorites';
 import Search from './components/Pages/Search/Search';
 import MovieDetails from './components/Pages/Details/MovieDetails';
 import ShowDetails from './components/Pages/Details/ShowsDetails';
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <div className="App">
+      <Helmet>
+        <title>StreamVic</title>
+        <meta name='description' content='Get info on all your favorite movies and tv shows' />
+        <meta name='keywords' content='Movies, Tv Shows, Search Movies, Search Tv Shows' />
+      </Helmet>
       <Router>
         <GlobalContext>
           <Switch>
@@ -37,9 +43,9 @@ function App() {
               <ShowDetails />
             </Route>
           </Switch>
-        </GlobalContext>
-      </Router>
-    </div>
+        </GlobalContext >
+      </Router >
+    </div >
   );
 }
 

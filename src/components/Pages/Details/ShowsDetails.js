@@ -6,7 +6,8 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './Details.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import TvTrailer from '../../Stateful/TvTrailer/TvTrailer';
-import FavsBtn from '../../Stateless/FavsBtn'
+import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -57,6 +58,10 @@ const ShowDetails = () => {
                 backgroundPosition: 'center',
 
             }}>
+            <Helmet>
+                <title>{showDetails.name}</title>
+                <meta name='description' content={showDetails.overview} />
+            </Helmet>
             <Navbar position='static' />
             {error && <div>{error}</div>}
             {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
@@ -64,7 +69,7 @@ const ShowDetails = () => {
                 <div className='details-main-info'>
                     <img className='details-poster' src={`${imgUrl}${showDetails.poster_path}`} alt={showDetails.name} />
                     <div className='details-main-info-text'>
-                        <h1 className='details-title'>{showDetails.title}</h1>
+                        <h1 className='details-title'>{showDetails.name}</h1>
                         <p className='details-overview'>{truncate(showDetails.overview, 300)}</p>
                         <div className='details-genres'>
                             <h1>Genres</h1>
@@ -93,7 +98,7 @@ const ShowDetails = () => {
             </span>
 
             <div className='details-cast'>
-                <DetailsCarousel url={`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`} title={'Cast'} />
+                <DetailsCarousel url={`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`} title={'Cast'} />
             </div>
         </div>
     )

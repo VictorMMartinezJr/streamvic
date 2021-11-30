@@ -4,6 +4,7 @@ import '../../Pages/Content.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
 import Pagination from '../../Stateless/Pagination/Pagination';
+import { Helmet } from 'react-helmet'
 
 
 
@@ -60,6 +61,10 @@ const Shows = () => {
 
     return (
         <section className='content-container'>
+            <Helmet>
+                <title>Explore Tv Shows</title>
+                <meta name='description' content='Explore all tv shows' />
+            </Helmet>
             <Navbar backgroundColor='#000' position='static' />
             <FilterBtn setSort={setSort} setPage={setPage} />
             <div className='content-data'>

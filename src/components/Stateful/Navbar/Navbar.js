@@ -43,7 +43,7 @@ const Navbar = ({ backgroundColor, position }) => {
                     <li className='nav-link'>Favorites</li>
                 </Link>
                 <Link to='/search' style={{ color: '#fff', textDecoration: "none" }}>
-                    <i className="fas fa-search"></i>
+                    <i className="fas fa-search search-icon"></i>
                 </Link>
             </ul>
         </div>

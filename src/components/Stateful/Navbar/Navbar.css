@@ -89,6 +89,14 @@
     .nav-link {
         font-size: 1.5rem;
     }
+
+    .search-icon {
+        font-size: 1.5rem;
+    }
+
+    .navbar-img {
+        height: 100px;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -150,6 +158,7 @@
     .navbar-img {
         height: 100%;
     }
+    
 }
 
 @media screen and (max-width: 540px) {

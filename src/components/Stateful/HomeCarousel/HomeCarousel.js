@@ -5,13 +5,14 @@ import "swiper/swiper-bundle.css";
 import Navbar from '../Navbar/Navbar';
 import { IoIosStar } from 'react-icons/io';
 import imdb from '../../../assets/imdb.png';
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 // beginning of url for tmdb images
 const img = 'https://image.tmdb.org/t/p/original';
 
 // fetch trending movies url
-const fetchTrending = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
+const fetchTrending = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`;
 
 // initialize swiper core
 SwiperCore.use([Autoplay, EffectFade]);
@@ -78,7 +79,9 @@ const HomeCarousel = () => {
                                         <img className='imdb-logo' src={imdb} alt="imdb" />
                                     </div>
                                     <div className='carousel-item-buttons'>
-                                        <button className='carousel-item-button-home'><i className="fas fa-arrow-right"></i>Learn More</button>
+                                        <Link to={`/moviedetails/${movie?.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
+                                            <button className='carousel-item-button-home'><i className="fas fa-arrow-right"></i>Learn More</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>)}

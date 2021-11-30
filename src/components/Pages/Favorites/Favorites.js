@@ -5,7 +5,8 @@ import './Favorites.css'
 import Navbar from '../../Stateful/Navbar/Navbar';
 import { useContext } from 'react';
 import { Favs } from '../../../context/GlobalContext'
-import heart from '../../../assets/heart.png'
+import heart from '../../../assets/heart.png';
+import { Helmet } from 'react-helmet';
 
 const Favorites = () => {
     const [data, setData] = useState([]);
@@ -21,6 +22,10 @@ const Favorites = () => {
 
     return (
         <section className='content-container'>
+            <Helmet>
+                <title>Favorites</title>
+                <meta name='description' content='Explore your favorite movies and tv shows' />
+            </Helmet>
             <Navbar backgroundColor='#000' position='static' />
             <div className='content-data'>
                 {favorites.length < 1 && <div className='empty-favorites'>

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { Favs } from '../../context/GlobalContext'
+import { Favs } from '../../../context/GlobalContext';
+import './FavsBtn.css';
 
 const FavsBtn = ({ content, className, checkFav }) => {
     const { favorites, setFavorites } = useContext(Favs);

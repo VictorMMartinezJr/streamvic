@@ -1,0 +1,23 @@
+.content-favorite-icon {
+    position: absolute;
+    font-size: 2rem;
+    bottom:10px;
+    right: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.content-favorite-icon.active {
+    font-weight: 700;
+}
+
+
+.details-favorite-icon {
+    color: red;
+    font-size: 4rem;
+    cursor: pointer;
+  }
+
+  .details-favorite-icon.active {
+    font-weight: 700;
+  }

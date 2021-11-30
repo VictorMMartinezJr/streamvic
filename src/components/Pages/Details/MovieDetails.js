@@ -6,7 +6,8 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './Details.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import MovieTrailer from '../../Stateful/MovieTrailers/MovieTrailer';
-import FavsBtn from '../../Stateless/FavsBtn'
+import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -57,6 +58,10 @@ const MoviesDetails = () => {
                 backgroundPosition: 'center',
 
             }}>
+            <Helmet>
+                <title>{movieDetails.title}</title>
+                <meta name='description' content={movieDetails.overview} />
+            </Helmet>
             <Navbar position='static' />
             {error && <div>{error}</div>}
             {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}

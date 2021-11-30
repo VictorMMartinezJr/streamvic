@@ -4,6 +4,7 @@ import '../../Pages/Content.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
 import Pagination from '../../Stateless/Pagination/Pagination';
+import { Helmet } from 'react-helmet'
 
 
 
@@ -59,6 +60,10 @@ const Movies = () => {
 
     return (
         <section className='content-container'>
+            <Helmet>
+                <title>Explore Movies</title>
+                <meta name='description' content='Explore all movies' />
+            </Helmet>
             <Navbar backgroundColor='#000' position='static' />
             <FilterBtn setSort={setSort} setPage={setPage} />
             <div className='content-data'>

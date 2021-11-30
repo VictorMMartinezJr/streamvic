@@ -1,12 +1,12 @@
 import './SingleComponent.css';
 import unavaliable from '../../../assets/photo-unavaliable.png';
 import { Link } from 'react-router-dom';
-import FavsBtn from '../../Stateless/FavsBtn';
+import FavsBtn from '../FavsBtn/FavsBtn';
 
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
-const SingleComponent = ({ title, poster, rating, release, id, content }) => {
+const MovieSingleComponent = ({ title, poster, rating, release, id, content }) => {
 
     return (
         <div className='component'>
@@ -25,4 +25,4 @@ const SingleComponent = ({ title, poster, rating, release, id, content }) => {
     )
 }
 
-export default SingleComponent
+export default MovieSingleComponent;
