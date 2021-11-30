@@ -20,17 +20,34 @@ const FilterBtn = ({ filterChange, setSort, setPage }) => {
         }
     }
 
+    const optionList = [
+        {
+            name: 'Popular',
+            value: 'popular',
+        },
+        {
+            name: 'Top Rated',
+            value: 'top_rated',
+        },
+    ];
+
     return (
-        <span className='content-filter'>
-            <h1 className='filter-title'>{title}</h1>
-            <div className='filter-dropdown' onClick={() => setShowChoices(!showChoices)}>
-                <button className='filter-btn'>Filter <i className="fas fa-caret-down"></i></button>
-                <div className={showChoices ? 'filter-dropdown-choices active' : 'filter-dropdown-choices'}>
-                    <option value="popular" onClick={handleFilter} className='filter-options'>Popular</option>
-                    <option value="top_rated" onClick={handleFilter} className='filter-options'>Top Rated</option>
-                </div>
-            </div>
-        </span>
+        <section className="content-filter">
+            <h2>
+                <span>{title}</span>
+            </h2>
+            <form>
+                <select className='filter-btn' name="selectSort" id="selectSort" onChange={handleFilter}>
+                    {optionList.map((option, i) => {
+                        return (
+                            <option className='filter-options' value={option.value} key={i}>
+                                {option.name}
+                            </option>
+                        );
+                    })}
+                </select>
+            </form>
+        </section>
     )
 }
 

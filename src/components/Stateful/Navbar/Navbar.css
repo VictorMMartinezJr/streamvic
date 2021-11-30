@@ -115,7 +115,7 @@
         flex-direction: column;
         transform: scale(0);
         transition: transform .2s ease-in-out;
-        z-index: 2;
+        z-index: 9;
     }
 
     .nav-links.active {
