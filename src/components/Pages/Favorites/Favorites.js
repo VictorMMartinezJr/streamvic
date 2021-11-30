@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import FavoritesSingleComponent from '../../Stateless/SingleComponent/FavoritesSingleComponent';
+import SingleComponent from '../../Stateless/SingleComponent/MovieSingleComponent';
 import '../../Pages/Content.css';
 import './Favorites.css'
 import Navbar from '../../Stateful/Navbar/Navbar';
@@ -34,7 +34,7 @@ const Favorites = () => {
                 </div>}
                 {data && data.map(data => {
                     return <div key={data.id}>
-                        <FavoritesSingleComponent style={{ pointerEvents: 'none' }} content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />
+                        <SingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />
                     </div>
                 })}
             </div>

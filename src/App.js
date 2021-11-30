@@ -47,7 +47,7 @@ function App() {
           </GlobalContext >
         </Router >
       </HelmetProvider>
-    </div >
+    </div>
   );
 }
 
