@@ -1,19 +1,17 @@
 import './SingleComponent.css';
 import unavaliable from '../../../assets/photo-unavaliable.png';
-import { Link } from 'react-router-dom';
-import FavsBtn from '../FavsBtn/FavsBtn'
+import FavsBtn from '../FavsBtn/FavsBtn';
 
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
-const ShowSingleComponent = ({ title, poster, rating, release, id, content }) => {
+const FavoritesSingleComponent = ({ title, poster, rating, release, id, content }) => {
+
     return (
         <div className='component'>
             <div className='component-data'>
                 <div className='component-img-container'>
-                    <Link to={`/showsdetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                        <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
-                    </Link>
+                    <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
                     <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
                 </div>
                 <FavsBtn content={content} className='content' />
@@ -24,4 +22,4 @@ const ShowSingleComponent = ({ title, poster, rating, release, id, content }) =>
     )
 }
 
-export default ShowSingleComponent
+export default FavoritesSingleComponent;

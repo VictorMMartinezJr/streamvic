@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = (url) => {
+const useFetchDetails = (url) => {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [numOfPages, setNumOfPages] = useState(10);
 
     useEffect(() => {
         fetch(url)
@@ -15,8 +14,7 @@ const useFetch = (url) => {
                 return resp.json()
             })
             .then(data => {
-                setData(data.results);
-                setNumOfPages(data.total_pages);
+                setData(data);
                 setIsLoading(false);
             })
             .catch(err => {
@@ -29,7 +27,7 @@ const useFetch = (url) => {
         // eslint-disable-next-line
     }, [url])
 
-    return { data, error, isLoading, numOfPages }
+    return { data, error, isLoading }
 }
 
-export default useFetch;
+export default useFetchDetails;

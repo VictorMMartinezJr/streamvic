@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import DetailsCarousel from './DetailsCarousel';
 import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
@@ -7,47 +6,20 @@ import './Details.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import TvTrailer from '../../Stateful/TvTrailer/TvTrailer';
 import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
+import useFetchDetails from '../../../hooks/useFetchDetails';
 
 
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
 const ShowDetails = () => {
-    const [showDetails, setShowDetails] = useState({});
-    const [error, setError] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
-
-    const fetchContent = () => {
-        fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-            .then(resp => {
-                if (!resp.ok) {
-                    throw Error('could not fetch the data')
-                }
-                return resp.json()
-            })
-            .then(data => {
-                setShowDetails(data);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
-            })
-
-    }
-
-    useEffect(() => {
-        fetchContent();
-        // eslint-disable-next-line
-    }, [id])
+    const { data: showDetails, error, isLoading } = useFetchDetails(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
 
     const value = showDetails.vote_average;
 
     const truncate = (str, n) => str?.length > n ? str.substring(0, n - 1) + '...' : str;
-
-
 
     return (
         <div

@@ -3,7 +3,7 @@ import MovieSingleComponent from '../../Stateless/SingleComponent/MovieSingleCom
 import ShowSingleComponent from '../../Stateless/SingleComponent/ShowSingleComponent'
 import './Search.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 
 

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import SingleComponent from '../../Stateless/SingleComponent/MovieSingleComponent';
+import FavoritesSingleComponent from '../../Stateless/SingleComponent/FavoritesSingleComponent';
 import '../../Pages/Content.css';
 import './Favorites.css'
 import Navbar from '../../Stateful/Navbar/Navbar';
 import { useContext } from 'react';
 import { Favs } from '../../../context/GlobalContext'
 import heart from '../../../assets/heart.png';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const Favorites = () => {
     const [data, setData] = useState([]);
@@ -34,7 +34,7 @@ const Favorites = () => {
                 </div>}
                 {data && data.map(data => {
                     return <div key={data.id}>
-                        <SingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />
+                        <FavoritesSingleComponent style={{ pointerEvents: 'none' }} content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />
                     </div>
                 })}
             </div>
