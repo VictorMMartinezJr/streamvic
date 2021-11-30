@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import SingleComponent from '../../Stateless/SingleComponent/MovieSingleComponent';
+import MovieSingleComponent from '../../Stateless/SingleComponent/MovieSingleComponent'
+import ShowSingleComponent from '../../Stateless/SingleComponent/ShowSingleComponent'
 import './Search.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -11,23 +13,40 @@ const Search = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState(null);
     const [searched, setSearched] = useState(false);
+    const [option, setOption] = useState(1);
 
 
 
     const fetchData = () => {
-        fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
-            .then(resp => {
-                if (!resp.ok) {
-                    throw Error('could not fetch the data')
-                }
-                return resp.json()
-            })
-            .then(data => {
-                setData(data.results);
-            })
-            .catch(err => {
-                setError(err.message);
-            })
+        if (option === 1) {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
+                .then(resp => {
+                    if (!resp.ok) {
+                        throw Error('could not fetch the data')
+                    }
+                    return resp.json()
+                })
+                .then(data => {
+                    setData(data.results);
+                })
+                .catch(err => {
+                    setError(err.message);
+                })
+        } else {
+            fetch(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
+                .then(resp => {
+                    if (!resp.ok) {
+                        throw Error('could not fetch the data')
+                    }
+                    return resp.json()
+                })
+                .then(data => {
+                    setData(data.results);
+                })
+                .catch(err => {
+                    setError(err.message);
+                })
+        }
     }
 
     const searchData = (searchTerm) => {
@@ -64,10 +83,18 @@ const Search = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Search Movies and Tv Shows</title>
+                <meta name='description' content='Search all movies and tv shows' />
+            </Helmet>
             <Navbar backgroundColor='#000' position='static' />
             <section className='search-container'>
                 <form className='search-form' onSubmit={handleSubmit}>
                     <h1 className='search-title'>GET INFO ON MILLIONS OF TITLES.<br></br>EXPLORE NOW</h1>
+                    <span className='search-option'>
+                        <span className={option === 1 ? 'search-type active' : 'search-type'} style={{ color: '#fff' }} onClick={() => setOption(1)}>MOVIES</span>
+                        <span className={option === 2 ? 'search-type active' : 'search-type'} style={{ color: '#fff' }} onClick={() => setOption(2)}>TV SHOWS</span>
+                    </span>
                     <span className='form-span'>
                         <div className='search-input-container'>
                             <input className='search-input' type="text" placeholder='Search' value={searchTerm} onChange={(e) => {
@@ -82,7 +109,7 @@ const Search = () => {
                     {error && <div>{error}</div>}
                     {data && data.map(data => {
                         return <div key={data.id}>
-                            <SingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />
+                            {option === 1 ? <MovieSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} /> : <ShowSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />}
                         </div>
                     })}
                 </div>
