@@ -7,17 +7,20 @@
     cursor: pointer;
 }
 
-.content-favorite-icon.active {
-    font-weight: 700;
+.details-favorite-icon {
+  color: red;
+  font-size: 4rem;
+  cursor: pointer;
 }
 
 
-.details-favorite-icon {
-    color: red;
-    font-size: 4rem;
-    cursor: pointer;
-  }
+.carousel-favorite-icon {
+  color: red;
+  cursor: pointer;
+  font-size: 3rem;
+  margin-left: 1rem;
+}
 
-  .details-favorite-icon.active {
+.content-favorite-icon.active, .details-favorite-icon.active, .carousel-favorite-icon.active {
     font-weight: 700;
-  }
+}

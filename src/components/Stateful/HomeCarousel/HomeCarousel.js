@@ -5,14 +5,13 @@ import "swiper/swiper-bundle.css";
 import Navbar from '../Navbar/Navbar';
 import { IoIosStar } from 'react-icons/io';
 import imdb from '../../../assets/imdb.png';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
+import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
+
 
 // beginning of url for tmdb images
 const img = 'https://image.tmdb.org/t/p/original';
-
-// fetch trending movies url
-const fetchTrending = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`;
 
 // initialize swiper core
 SwiperCore.use([Autoplay, EffectFade]);
@@ -23,39 +22,7 @@ const truncate = (str, n) => {
 }
 
 const HomeCarousel = () => {
-    const [movies, setMovies] = useState([]);
-    const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-
-    // Fetch Trending Movies & setMovies
-    useEffect(() => {
-        const abortCont = new AbortController();
-        fetch(fetchTrending, { signal: abortCont.signal })
-            .then(resp => {
-                if (!resp.ok) {
-                    throw Error('Could not fetch the data for the resource');
-                }
-                return resp.json()
-            })
-            .then(data => {
-                setMovies(data.results || data.cast);
-                setIsLoading(false)
-            })
-            .catch(err => {
-                if (err.name === 'AbortError') {
-                    console.log('Fetch Aborted')
-                } else {
-                    setError(err.message);
-                    setIsLoading(false);
-                }
-            });
-
-        return () => {
-            abortCont.abort();
-        };
-
-        // eslint-disable-next-line
-    }, [])
+    const { data: movies, error, isLoading } = useFetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`)
 
     return (
         <div className='home-carousel'>
@@ -89,6 +56,7 @@ const HomeCarousel = () => {
                                         <Link to={`/moviedetails/${movie?.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                                             <button className='carousel-item-button-home'><i className="fas fa-arrow-right"></i>Learn More</button>
                                         </Link>
+                                        <FavsBtn content={movie} className='carousel' />
                                     </div>
                                 </div>
                             </div>)}

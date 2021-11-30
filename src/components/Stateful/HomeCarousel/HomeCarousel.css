@@ -115,19 +115,6 @@
     border-radius: 50px; 
 }
 
-.carousel-item-button-secondary {
-    border: none;
-    margin-left: 1rem;
-}
-
-.carousel-item-button-secondary i {
-    margin-right: 1rem;
-}
-
-.carousel-item-buttons i {
-    font-size: 1.5rem;
-    color: #fff;  
-}
 
 .active .carousel-item-title, .active .carousel-item-description, .active .date, .active .carousel-item-span, .active .carousel-item-buttons {
     opacity: 1;
