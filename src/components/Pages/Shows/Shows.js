@@ -1,60 +1,35 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ShowSingleComponent from '../../Stateless/SingleComponent/ShowSingleComponent';
 import '../../Pages/Content.css';
 import Navbar from '../../Stateful/Navbar/Navbar';
 import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
 import Pagination from '../../Stateless/Pagination/Pagination';
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async';
+import useFetch from '../../hooks/useFetch';
 
 
 
 const Shows = () => {
     const [page, setPage] = useState(1);
-    const [shows, setShows] = useState([]);
     const [sort, setSort] = useState('popular');
-    const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-
-
-    const fetchMovies = () => {
-        fetch(`https://api.themoviedb.org/3/tv/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
-            .then(resp => {
-                if (!resp.ok) {
-                    throw Error('could not fetch the data')
-                }
-                return resp.json()
-            })
-            .then(data => {
-                setShows(data.results);
-                setIsLoading(false);
-            })
-            .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
-            })
-    }
-
-    useEffect(() => {
-        fetchMovies();
-        return () => {
-            setShows('')
-        }
-        // eslint-disable-next-line
-    }, [page, sort])
+    const { data: shows, error, isLoading } = useFetch(`https://api.themoviedb.org/3/tv/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
 
     // go to next page when next button is clicked on pagination
     const handleNextPage = () => {
         setPage(page + 1);
+        window.scroll(0, 0);
     };
 
     // go to previous page when prev button is clicked on pagination
     const handlePrevPage = () => {
         setPage(page - 1);
+        window.scroll(0, 0);
     };
 
     // the index of the dot you click becomes the current page
     const handleChoosePage = (pageNum) => {
         setPage(pageNum);
+        window.scroll(0, 0);
     };
 
 

@@ -1,47 +1,15 @@
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { useState, useEffect } from 'react';
 import './TrendingCarousel.css';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
 
 // BaseURL for images
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 const unavaliable = 'https://mychildsafetyinstitute.org/wp-content/uploads/2014/07/Profile-Photo-Unavailable.png';
 
-const Carousel = ({ url, title }) => {
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    // Fetch Trending Movies & setMovies
-    useEffect(() => {
-        const abortCont = new AbortController();
-        fetch(url, { signal: abortCont.signal })
-            .then(resp => {
-                if (!resp.ok) {
-                    throw Error('Could not fetch the data for the resource');
-                }
-                return resp.json()
-            })
-            .then(data => {
-                setData(data.results || data.cast);
-                setIsLoading(false)
-            })
-            .catch(err => {
-                if (err.name === 'AbortError') {
-                    console.log('Fetch Aborted')
-                } else {
-                    setError(err.message);
-                    setIsLoading(false);
-                }
-            });
-
-        return () => {
-            abortCont.abort();
-        };
-
-        // eslint-disable-next-line
-    }, [])
+const Carousel = () => {
+    const { data, error, isLoading } = useFetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`)
 
     // Items in carousel
     const items = data.map(data => {
@@ -82,7 +50,7 @@ const Carousel = ({ url, title }) => {
         <div className='slider-section'>
             {error && <div>{error}</div>}
             {!isLoading && !error && <div className='slider-container'>
-                <h1 className='slider-title'>{title}</h1>
+                <h1 className='slider-title'>Trending Movies</h1>
                 <AliceCarousel mouseTracking items={items} responsive={responsive} animationDuration={600} infinite animationType='fadeout' autoHeight disableDotsControls renderNextButton={renderNextButton} renderPrevButton={renderPrevButton} />
             </div>}
         </div>

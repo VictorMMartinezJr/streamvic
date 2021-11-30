@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <section className='home'>
             <HomeCarousel />
-            <AliceCarousel url={`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`} title={'Trending Movies'} />
+            <AliceCarousel />
         </section>
     )
 }

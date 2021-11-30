@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import './DetailsCarousel.css';
 
 // BaseURL for images
-const imgUrl = 'https://image.tmdb.org/t/p/original/';
+const imgUrl = 'https://image.tmdb.org/t/p/original';
 const unavaliable = 'https://mychildsafetyinstitute.org/wp-content/uploads/2014/07/Profile-Photo-Unavailable.png';
 
 const DetailsCarousel = ({ url, title }) => {
@@ -45,7 +45,7 @@ const DetailsCarousel = ({ url, title }) => {
     // Items in carousel
     const items = data.map(data => {
         return <div className='details-img-container'>
-            <img className='details-carousel-img' src={data?.profile_path === null || data?.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
+            <img className='details-carousel-img' src={data?.profile_path === null || data?.poster_path === 'undefined' ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
             <h4>{data?.name || data?.title}</h4>
         </div>
     })
