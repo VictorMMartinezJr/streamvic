@@ -16,8 +16,10 @@ const Movies = () => {
     const [isLoading, setIsLoading] = useState(true);
 
 
-    const fetchMovies = () => {
-        fetch(`https://api.themoviedb.org/3/movie/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        fetch(`https://api.themoviedb.org/3/movie/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`, { signal: abortController.signal })
             .then(resp => {
                 if (!resp.ok) {
                     throw Error('could not fetch the data')
@@ -29,18 +31,45 @@ const Movies = () => {
                 setIsLoading(false);
             })
             .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
+                if (err.name !== 'AbortError') {
+                    setError(err.message);
+                    setIsLoading(false);
+                } else {
+                    console.log('fetch aborted')
+                }
             })
-    }
 
-    useEffect(() => {
-        fetchMovies();
         return () => {
-            setMovies('')
+            abortController.abort()
         }
+
         // eslint-disable-next-line
     }, [page, sort])
+    // const fetchMovies = () => {
+    //     fetch(`https://api.themoviedb.org/3/movie/${sort}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`)
+    //         .then(resp => {
+    //             if (!resp.ok) {
+    //                 throw Error('could not fetch the data')
+    //             }
+    //             return resp.json()
+    //         })
+    //         .then(data => {
+    //             setMovies(data.results);
+    //             setIsLoading(false);
+    //         })
+    //         .catch(err => {
+    //             setError(err.message);
+    //             setIsLoading(false);
+    //         })
+    // }
+
+    // useEffect(() => {
+    //     fetchMovies();
+    //     return () => {
+    //         setMovies('')
+    //     }
+    //     // eslint-disable-next-line
+    // }, [page, sort])
 
     // go to next page when next button is clicked on pagination
     const handleNextPage = () => {

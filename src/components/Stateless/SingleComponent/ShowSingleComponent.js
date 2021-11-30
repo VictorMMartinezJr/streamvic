@@ -1,6 +1,5 @@
 import './SingleComponent.css';
 import unavaliable from '../../../assets/photo-unavaliable.png';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import FavsBtn from '../FavsBtn/FavsBtn'
 

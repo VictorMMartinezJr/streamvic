@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import popcorn from '../../../assets/nav-logo.png'
@@ -7,15 +7,20 @@ const Navbar = ({ backgroundColor, position }) => {
     const [navActive, setNavActive] = useState(false);
     const [navBackground, setNavBackground] = useState(false);
 
-    const addNavBackground = () => {
-        if (window.scrollY >= 80) {
-            setNavBackground(true)
-        } else {
-            setNavBackground(false)
+    useEffect(() => {
+        const addNavBackground = () => {
+            if (window.scrollY >= 80) {
+                setNavBackground(true)
+            } else {
+                setNavBackground(false)
+            }
         }
-    }
 
-    window.addEventListener('scroll', addNavBackground);
+        window.addEventListener('scroll', addNavBackground);
+        return () => {
+            window.removeEventListener('scroll', addNavBackground)
+        }
+    }, [])
 
     return (
         <div className={navBackground ? 'navbar active' : 'navbar'} style={{ position: position, backgroundColor: backgroundColor }}>

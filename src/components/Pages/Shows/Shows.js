@@ -26,7 +26,6 @@ const Shows = () => {
             })
             .then(data => {
                 setShows(data.results);
-                console.log(data.results)
                 setIsLoading(false);
             })
             .catch(err => {
