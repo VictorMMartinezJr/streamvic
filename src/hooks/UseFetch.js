@@ -7,7 +7,9 @@ const useFetch = (url) => {
     const [numOfPages, setNumOfPages] = useState(10);
 
     useEffect(() => {
-        fetch(url)
+        const abortCont = new AbortController();
+
+        fetch(url, { signal: abortCont.signal })
             .then(resp => {
                 if (!resp.ok) {
                     throw Error('Could not fetch the data for the resource');
@@ -20,12 +22,18 @@ const useFetch = (url) => {
                 setIsLoading(false);
             })
             .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
+                if (err.name === 'AbortError') {
+                    console.log('Fetch Aborted')
+                } else {
+                    setError(err.message);
+                    setIsLoading(false);
+                }
             });
+
         return () => {
-            setData('')
-        }
+            abortCont.abort();
+        };
+
         // eslint-disable-next-line
     }, [url])
 

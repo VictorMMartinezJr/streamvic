@@ -14,8 +14,9 @@ const Carousel = ({ url, title }) => {
     const [error, setError] = useState(null);
 
     // Fetch Trending Movies & setMovies
-    const fetchData = () => {
-        fetch(url)
+    useEffect(() => {
+        const abortCont = new AbortController();
+        fetch(url, { signal: abortCont.signal })
             .then(resp => {
                 if (!resp.ok) {
                     throw Error('Could not fetch the data for the resource');
@@ -27,14 +28,18 @@ const Carousel = ({ url, title }) => {
                 setIsLoading(false)
             })
             .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
-            })
-    }
+                if (err.name === 'AbortError') {
+                    console.log('Fetch Aborted')
+                } else {
+                    setError(err.message);
+                    setIsLoading(false);
+                }
+            });
 
-    // Call FetchTrending
-    useEffect(() => {
-        fetchData();
+        return () => {
+            abortCont.abort();
+        };
+
         // eslint-disable-next-line
     }, [])
 

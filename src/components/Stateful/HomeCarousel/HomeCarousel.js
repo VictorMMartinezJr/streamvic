@@ -27,8 +27,10 @@ const HomeCarousel = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const fetchData = () => {
-        fetch(fetchTrending)
+    // Fetch Trending Movies & setMovies
+    useEffect(() => {
+        const abortCont = new AbortController();
+        fetch(fetchTrending, { signal: abortCont.signal })
             .then(resp => {
                 if (!resp.ok) {
                     throw Error('Could not fetch the data for the resource');
@@ -36,17 +38,22 @@ const HomeCarousel = () => {
                 return resp.json()
             })
             .then(data => {
-                setMovies(data.results.splice(0, 5));
-                setIsLoading(false);
+                setMovies(data.results || data.cast);
+                setIsLoading(false)
             })
             .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
-            })
-    }
+                if (err.name === 'AbortError') {
+                    console.log('Fetch Aborted')
+                } else {
+                    setError(err.message);
+                    setIsLoading(false);
+                }
+            });
 
-    useEffect(() => {
-        fetchData();
+        return () => {
+            abortCont.abort();
+        };
+
         // eslint-disable-next-line
     }, [])
 

@@ -6,7 +6,9 @@ const useFetchDetails = (url) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(url)
+        const abortCont = new AbortController();
+
+        fetch(url, { signal: abortCont.signal })
             .then(resp => {
                 if (!resp.ok) {
                     throw Error('Could not fetch the data for the resource');
@@ -18,12 +20,18 @@ const useFetchDetails = (url) => {
                 setIsLoading(false);
             })
             .catch(err => {
-                setError(err.message);
-                setIsLoading(false);
+                if (err.name === 'AbortError') {
+                    console.log('Fetch Aborted')
+                } else {
+                    setError(err.message);
+                    setIsLoading(false);
+                }
             });
+
         return () => {
-            setData('')
-        }
+            abortCont.abort();
+        };
+
         // eslint-disable-next-line
     }, [url])
 
