@@ -6,9 +6,18 @@
     align-items: center;
     background-image: url('../../../assets/search-wallpaper.jpg');
     background-size: contain;
-    background-color: rgba(0,0,0,.8); /* Tint color */
-    background-blend-mode: multiply;
     text-align: center;
+    position: relative;
+}
+
+.search-container::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
 }
 
 .search-data {
@@ -18,6 +27,7 @@
     align-items: center;
     margin: 1rem;
     width: 100%;
+    z-index: 2;
 }
 
 .search-title {
@@ -35,6 +45,7 @@
     width: 90%;
     padding: 1rem 0;
     position: relative;
+    z-index: 2;
 }
 
 .search-option {
