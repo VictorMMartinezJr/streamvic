@@ -2,6 +2,9 @@
 
 A dynamic web app for users to browsing, searching and bookmarking movies.
 
+[Live Site](https://streamvic.netlify.app/)
+
+
 
 ## Overview
 
