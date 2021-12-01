@@ -1,8 +1,7 @@
 import './FilterBtn.css';
 import { useState } from 'react'
 
-const FilterBtn = ({ filterChange, setSort, setPage }) => {
-    const [showChoices, setShowChoices] = useState(false);
+const FilterBtn = ({ setSort, setPage }) => {
     const [title, setTitle] = useState('Popular');
 
     const handleFilter = (e) => {
