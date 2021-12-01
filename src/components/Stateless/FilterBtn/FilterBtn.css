@@ -4,32 +4,20 @@
 }
 
 .filter-btn {
-    display: flex;
-    align-items: center;
     padding: .5rem 1rem;
     background: red;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     font-size: 1.5rem;
-    box-shadow: 0 0 10px red;
     color: #fff;
     cursor: pointer;
     font-weight: 700;
     outline: none;
 }
 
-.filter-btn i {
-    font-size: 1.5rem;
-}
-
-.filter-options {
-    cursor: pointer;
-    font-weight: 700;
-}
-
 @media screen and (max-width: 540px) {
     .filter-options {
-        font-size: 1rem
+        font-size: 1rem;
     }
 }
 
@@ -45,17 +33,5 @@
     .filter-title {
         font-size: 1rem;
         font-weight: 700;
-    }
-
-    .filter-btn {
-        font-size: 1rem;
-    }
-
-    .filter-btn i {
-        font-size: 1rem;
-    }
-
-    .filter-dropdown-choices {
-        font-size: 1rem;
     }
 } 
