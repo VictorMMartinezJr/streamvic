@@ -1,6 +1,7 @@
-# STREAMVIC
+# StreamVic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A dynamic web app for users to browsing, searching and bookmarking movies.
+
 
 ## Available Scripts
 
