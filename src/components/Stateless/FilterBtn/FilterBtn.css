@@ -5,8 +5,8 @@
 
 .filter-btn {
     padding: .5rem 1rem;
-    background: red;
-    border: none;
+    background: #000;
+    border: 2px solid #fff;
     border-radius: 5px;
     font-size: 1.5rem;
     color: #fff;
