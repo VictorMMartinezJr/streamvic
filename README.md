@@ -1,6 +1,6 @@
 # StreamVic
 
-A dynamic web app for users to browsing, searching and bookmarking movies.
+A dynamic web app for users to browse, search, & favorite movies/tvshows.
 
 [Live Site](https://streamvic.netlify.app/)
 
