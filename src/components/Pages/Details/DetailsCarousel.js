@@ -2,6 +2,8 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { useState, useEffect } from 'react';
 import './DetailsCarousel.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 // BaseURL for images
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -45,7 +47,7 @@ const DetailsCarousel = ({ url, title }) => {
     // Items in carousel
     const items = data.map(data => {
         return <div className='details-img-container'>
-            <img className='details-carousel-img' src={data?.profile_path === null || data?.poster_path === 'undefined' ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
+            <LazyLoadImage effect='blur' className='details-carousel-img' src={data?.profile_path === null || data?.poster_path === 'undefined' ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
             <h4>{data?.name || data?.title}</h4>
         </div>
     })

@@ -1,7 +1,9 @@
 import './SingleComponent.css';
 import unavaliable from '../../../assets/photo-unavaliable.png';
 import { Link } from 'react-router-dom';
-import FavsBtn from '../FavsBtn/FavsBtn'
+import FavsBtn from '../FavsBtn/FavsBtn';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -12,7 +14,7 @@ const ShowSingleComponent = ({ title, poster, rating, release, id, content }) =>
             <div className='component-data'>
                 <div className='component-img-container'>
                     <Link to={`/showsdetails/${id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                        <img src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
+                        <LazyLoadImage effect='blur' src={poster === undefined || poster === null ? unavaliable : `${imgUrl}${poster}`} alt={`${title}`} className='component-img' />
                     </Link>
                     <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
                 </div>

@@ -9,8 +9,6 @@ import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
 import { Helmet } from 'react-helmet-async';
 import useFetchDetails from '../../hooks/useFetchDetails';
 
-
-
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
 const ShowDetails = () => {

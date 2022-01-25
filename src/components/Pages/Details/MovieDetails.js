@@ -37,7 +37,7 @@ const MoviesDetails = () => {
             {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
             {!isLoading && !error && <div className='details-main'>
                 <div className='details-main-info'>
-                    <img className='details-poster' src={`${imgUrl}${movieDetails.poster_path}`} alt={movieDetails.name} />
+                    <img effect='blur' className='details-poster' src={`${imgUrl}${movieDetails.poster_path}`} alt={movieDetails.name} />
                     <div className='details-main-info-text'>
                         <h1 className='details-title'>{movieDetails.title}</h1>
                         <p className='details-overview'>{truncate(movieDetails.overview, 300)}</p>

@@ -3,6 +3,8 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import './TrendingCarousel.css';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 // BaseURL for images
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -15,7 +17,7 @@ const Carousel = () => {
     const items = data.map(data => {
         return <div className='img-container'>
             <Link to={`/moviedetails/${data.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                <img className='carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
+                <LazyLoadImage effect='blur' className='carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
             </Link>
             <h4>{data?.name || data?.title}</h4>
         </div>

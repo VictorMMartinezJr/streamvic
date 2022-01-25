@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# StreamVic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A dynamic web app for users to browsing, searching and bookmarking movies.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+StreamVic is a web app built with ReactJs that allows users to browse movie/tv show information and save their favorites. This application uses the TMDB API to fetch movie/tv show data and outputs content dynamically to the webpage. Users can use the API to also search for a particular movie/tv show.
+
+![Alt text](relative/path/to/img.jpg?raw=true)
 
 ### `npm start`
 

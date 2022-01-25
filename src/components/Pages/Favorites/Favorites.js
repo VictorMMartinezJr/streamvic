@@ -7,6 +7,8 @@ import { useContext } from 'react';
 import { Favs } from '../../../context/GlobalContext'
 import heart from '../../../assets/heart.png';
 import { Helmet } from 'react-helmet-async';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Favorites = () => {
     const [data, setData] = useState([]);
@@ -29,7 +31,7 @@ const Favorites = () => {
             <Navbar backgroundColor='#000' position='static' />
             <div className='content-data'>
                 {favorites.length < 1 && <div className='empty-favorites'>
-                    <img src={heart} alt="heart" />
+                    <LazyLoadImage effect='blur' src={heart} alt="heart" />
                     <h1>Favorites Empty Click the <i style={{ color: 'red' }} className="far fa-heart"></i> Icon To Add Here!</h1>
                 </div>}
                 {data && data.map(data => {

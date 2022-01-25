@@ -8,6 +8,8 @@ import imdb from '../../../assets/imdb.png';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 // beginning of url for tmdb images
@@ -41,7 +43,7 @@ const HomeCarousel = () => {
                     return <SwiperSlide key={i}>
                         {({ isActive }) => (
                             <div className={`${isActive ? 'home-carousel-item active' : 'home-carousel-item'}`} style={{ backgroundImage: `url(${img}${movie.backdrop_path})` }}>
-                                <img className='carousel-item-poster' src={`${img}${movie?.poster_path}`} alt={movie.title} />
+                                <LazyLoadImage effect='blur' className='carousel-item-poster' src={`${img}${movie?.poster_path}`} alt={movie.title} />
                                 <div className='carousel-item-info'>
                                     <h1 className='carousel-item-title'>{movie?.title || movie?.name || movie?.original_name}</h1>
                                     <h1 className='carousel-item-description'>

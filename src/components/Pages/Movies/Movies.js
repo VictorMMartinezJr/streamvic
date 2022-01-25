@@ -7,6 +7,7 @@ import Pagination from '../../Stateless/Pagination/Pagination';
 import { Helmet } from 'react-helmet-async';
 import useFetch from '../../hooks/useFetch';
 
+
 const Movies = () => {
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('popular');
