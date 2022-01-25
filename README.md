@@ -1,5 +1,6 @@
 # StreamVic
 
+<<<<<<< HEAD
 A dynamic web app for users to browsing, searching and bookmarking movies.
 
 ## Overview
@@ -7,66 +8,44 @@ A dynamic web app for users to browsing, searching and bookmarking movies.
 StreamVic is a web app built with ReactJs that allows users to browse movie/tv show information and save their favorites. This application uses the TMDB API to fetch movie/tv show data and outputs content dynamically to the webpage. Users can use the API to also search for a particular movie/tv show.
 
 ![Alt text](relative/path/to/img.jpg?raw=true)
+=======
+A dynamic web app for users to browse, search, & favorite movies/tvshows.
 
-### `npm start`
+[Live Site](https://streamvic.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+>>>>>>> 1d74fccbbd9d596baa9d4ec91c15ef02c3afb453
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+StreamVic is a web app built with ReactJs that allows users to browse movie/tv show information and save their favorites. This application uses the TMDB API to fetch movie/tv show data and outputs content dynamically to the webpage. Users can use the API to also search for a particular movie/tv show.
 
-### `npm run build`
+![streamvicv2](https://user-images.githubusercontent.com/93169407/144171701-26278690-9dda-4bc6-8633-d5a93fac749d.png)
+![Screenshot 2021-12-01 215554](https://user-images.githubusercontent.com/93169407/144349793-978b69eb-829a-46af-a8e1-caa417181e16.png)
+![Screenshot 2021-12-01 215610](https://user-images.githubusercontent.com/93169407/144349802-b484eb19-0b10-4e57-884e-6ca700363600.png)
+![Screenshot 2021-12-01 215858](https://user-images.githubusercontent.com/93169407/144349805-802194d7-fddf-4bfd-ba89-55f9c5b99333.png)
+![Screenshot 2021-12-01 215721](https://user-images.githubusercontent.com/93169407/144349812-6fdaec42-a323-4de6-b077-b3647bcc05e3.png)
+![Screenshot 2021-12-01 215657](https://user-images.githubusercontent.com/93169407/144349818-1ed6a93a-18ff-4933-82f1-71364c0bbf09.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* React
+* HTML5
+* CSS
+* Github
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Features
 
-### `npm run eject`
+* Movie Filter
+* Multiple Pages
+* Favorites
+* Search
+* Fully Responsive
+* Sort Data
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Room for Improvement
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Improve SEO 
+* Speed up load times
+* Update to React Router v6 from v5
+* Fix sort button styles on mobile devices
