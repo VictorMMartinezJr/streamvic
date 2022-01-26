@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import popcorn from '../../../assets/popcorn-logo.svg'
+import popcorn from '../../../assets/popcorn-logo.svg';
+import {GoSearch} from 'react-icons/go';
 
 const Navbar = ({ backgroundColor, position }) => {
     const [navActive, setNavActive] = useState(false);
@@ -54,7 +55,7 @@ const Navbar = ({ backgroundColor, position }) => {
                     <li role={'presentation'} className='nav-link'>Favorites</li>
                 </Link>
                 <Link to='/search' style={{ color: '#fff', textDecoration: "none" }}>
-                    <i className="fas fa-search search-icon"></i>
+                    <GoSearch className="fas fa-search search-icon" />
                 </Link>
             </ul>
         </div>
