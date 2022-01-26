@@ -1,0 +1,16 @@
+.error-div {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ededed;
+  background-color: #171717;
+}
+.error-div img {
+  margin-bottom: 1rem;
+}
+.error-div p {
+  font-size: 2rem;
+}
