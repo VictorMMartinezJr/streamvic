@@ -1,26 +1,24 @@
 .content-favorite-icon {
-    position: absolute;
-    font-size: 2rem;
-    bottom:10px;
-    right: 20px;
-    color: red;
-    cursor: pointer;
+  position: absolute;
+  font-size: 2rem;
+  bottom: 10px;
+  right: 20px;
+  color: #e91919;
+  cursor: pointer;
 }
-
 .details-favorite-icon {
-  color: red;
+  color: #e91919;
   font-size: 4rem;
   cursor: pointer;
 }
-
-
 .carousel-favorite-icon {
-  color: red;
+  color: #e91919;
   cursor: pointer;
   font-size: 3rem;
   margin-left: 1rem;
 }
-
-.content-favorite-icon.active, .details-favorite-icon.active, .carousel-favorite-icon.active {
-    font-weight: 700;
+.content-favorite-icon.active,
+.details-favorite-icon.active,
+.carousel-favorite-icon.active {
+  font-weight: 700;
 }

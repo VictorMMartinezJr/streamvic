@@ -30,7 +30,6 @@ const useFetchDetails = (url) => {
         return () => {
             abortController.abort();
         }
-
         // eslint-disable-next-line
     }, [url])
 

@@ -1,62 +1,56 @@
 .content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #111111;
+  min-height: 100vh;
+}
+.content-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ededed;
+  width: 90%;
+}
+.content-data {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-content: center;
+  margin: 1rem;
+  width: 100%;
+  background: #111111;
+}
+.movie-component {
+  position: relative;
+}
+
+/* Media queries */
+@media screen and (max-width: 1280px) {
+  .content-data {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 1024px) {
+  .content-data {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 770px) {
+  .content-nav ul {
+    flex: 1;
+  }
+}
+@media screen and (max-width: 600px) {
+  .content-data {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #000;
-    min-height: 100vh;
+  }
 }
-
-.content-filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-    width: 90%;
-}
-
-.content-data {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    align-content: center;
-    margin: 1rem;
-    width: 100%;
-    background: #000;
-}
-
-.movie-component {
-    position: relative;
-}
-
-@media screen and (max-width: 1280px) {
-    .content-data{
-    grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .content-data{
-    grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 770px) {
-    .content-nav ul{
-        flex: 1;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .content-data{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
 @media screen and (max-width: 280px) {
-    .header{
-        font-size: 1.3rem;
-        letter-spacing: 0px;
-    }
+  .header {
+    font-size: 1.3rem;
+    letter-spacing: 0px;
+  }
 }

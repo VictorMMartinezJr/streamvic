@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import ShowSingleComponent from '../../Stateless/SingleComponent/ShowSingleComponent';
 import '../../Pages/Content.css';
-import Navbar from '../../Stateful/Navbar/Navbar';
-import FilterBtn from '../../Stateless/FilterBtn/FilterBtn';
-import Pagination from '../../Stateless/Pagination/Pagination';
+import Navbar from '../../Stateful/Navbar';
+import FilterBtn from '../../Stateless/FilterBtn';
+import Pagination from '../../Stateless/Pagination';
 import { Helmet } from 'react-helmet-async';
 import useFetch from '../../hooks/useFetch';
+import ErrorDiv from '../../Stateless/Error';
+import LoadingDiv from '../../Stateless/Loading';
 
 
 
@@ -39,18 +41,18 @@ const Shows = () => {
                 <title>Explore Tv Shows</title>
                 <meta name='description' content='Explore all tv shows' />
             </Helmet>
-            <Navbar backgroundColor='#000' position='static' />
+            <Navbar backgroundColor='#111111' position='static' />
             <FilterBtn setSort={setSort} setPage={setPage} />
             <div className='content-data'>
-                {error && <div>{error}</div>}
-                {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
+                {error && <ErrorDiv message={error}/>}
+                {isLoading && <LoadingDiv />}
                 {!isLoading && !error && shows && shows.map(shows => {
                     return <div key={shows.id}>
                         <ShowSingleComponent content={shows} title={shows.name} poster={shows.poster_path} rating={shows.vote_average} release={shows.first_air_date} id={shows.id} />
                     </div>
                 })}
             </div>
-            {!isLoading && !error && shows && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={5} />}
+            {!isLoading && !error && shows && <Pagination page={page} handleChoosePage={handleChoosePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} maxPages={4} />}
         </section>
     )
 }

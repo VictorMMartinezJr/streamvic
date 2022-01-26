@@ -2,10 +2,9 @@ import { useState } from 'react'
 import MovieSingleComponent from '../../Stateless/SingleComponent/MovieSingleComponent'
 import ShowSingleComponent from '../../Stateless/SingleComponent/ShowSingleComponent'
 import './Search.css';
-import Navbar from '../../Stateful/Navbar/Navbar';
+import Navbar from '../../Stateful/Navbar';
 import { Helmet } from 'react-helmet';
-
-
+import ErrorDiv from '../../Stateless/Error';
 
 const Search = () => {
     const [data, setData] = useState([]);
@@ -14,8 +13,6 @@ const Search = () => {
     const [error, setError] = useState(null);
     const [searched, setSearched] = useState(false);
     const [option, setOption] = useState(1);
-
-
 
     const fetchData = () => {
         if (option === 1) {
@@ -87,7 +84,7 @@ const Search = () => {
                 <title>Search Movies and Tv Shows</title>
                 <meta name='description' content='Search all movies and tv shows' />
             </Helmet>
-            <Navbar backgroundColor='#000' position='static' />
+            <Navbar backgroundColor='#111111' position='static' />
             <section className='search-container'>
                 <form className='search-form' onSubmit={handleSubmit}>
                     <h1 className='search-title'>GET INFO ON MILLIONS OF TITLES.<br></br>EXPLORE NOW</h1>
@@ -106,7 +103,7 @@ const Search = () => {
                     </span>
                 </form>
                 <div className='search-data'>
-                    {error && <div>{error}</div>}
+                    {error && <ErrorDiv message={error}/>}
                     {data && data.map(data => {
                         return <div key={data.id}>
                             {option === 1 ? <MovieSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} /> : <ShowSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />}

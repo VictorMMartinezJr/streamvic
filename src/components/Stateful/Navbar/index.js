@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import popcorn from '../../../assets/nav-logo.png'
+import popcorn from '../../../assets/popcorn-logo.svg'
 
 const Navbar = ({ backgroundColor, position }) => {
     const [navActive, setNavActive] = useState(false);
@@ -22,6 +22,8 @@ const Navbar = ({ backgroundColor, position }) => {
         }
     }, [])
 
+    window.addEventListener('scroll', () => setNavActive(false))
+
     return (
         <div className={navBackground ? 'navbar active' : 'navbar'} style={{ position: position, backgroundColor: backgroundColor }}>
             <span className='title'>
@@ -29,7 +31,11 @@ const Navbar = ({ backgroundColor, position }) => {
                 <img className='navbar-img' src={popcorn} alt="popcorn" />
             </span>
 
-            <div className="burger" onClick={() => setNavActive(!navActive)}>
+            <div className="burger" 
+            onClick={() => {
+                setNavActive(!navActive)
+                if (!navBackground) setNavBackground(true);
+                }}>
                 <div className={navActive ? "line-1 toggle" : 'line-1'}></div>
                 <div className={navActive ? "line-2 toggle" : 'line-2'}></div>
                 <div className={navActive ? "line-3 toggle" : 'line-3'}></div>

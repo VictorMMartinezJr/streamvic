@@ -1,253 +1,220 @@
 .home-carousel-item {
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0,0,0,.7); /* Tint color */
-    background-blend-mode: multiply;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    position: relative;
-    cursor: auto;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Tint color */
+  background-blend-mode: multiply;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ededed;
+  position: relative;
+  cursor: auto;
 }
-
 .home-carousel-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    height: 20px;
-    width: 100%;
-    background: linear-gradient(180deg, transparent, #000);
-    z-index: 2;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+  background: linear-gradient(180deg, transparent, #111111);
+  z-index: 2;
 }
-
 .carousel-item-poster {
-    height: 35rem;
-    object-fit: contain;
-    margin: 0 1rem;
-    border-radius: 10px;
+  height: 35rem;
+  object-fit: contain;
+  margin: 0 1rem;
+  border-radius: 10px;
+}
+.carousel-item-info {
+  height: 60%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 1rem;
+}
+.carousel-item-title,
+.carousel-item-description,
+.date,
+.carousel-item-span,
+.carousel-item-buttons {
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+.carousel-item-title {
+  font-size: 4rem;
+  transition-delay: 0.1s;
+}
+.carousel-item-description {
+  font-weight: 400;
+  transition-delay: 0.2s;
+}
+.active .carousel-item-description {
+  opacity: 1;
+}
+.date {
+  font-size: 2rem;
+  transition-delay: 0.3s;
+}
+.active .date {
+  opacity: 1;
+}
+.carousel-item-span {
+  position: relative;
+  font-size: 2rem;
+  transition-delay: 0.4s;
+}
+.rating-secondary {
+  font-size: 1.5rem;
+  color: rgb(155, 155, 155);
+}
+.imdb-logo {
+  position: absolute;
+  height: 100%;
+  object-fit: contain;
+  margin-left: 1rem;
+}
+.active .carousel-item-span {
+  opacity: 1;
+}
+.carousel-item-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 0;
+  transition-delay: 0.5s;
+}
+.carousel-item-buttons button {
+  background: transparent;
+  padding: 1rem;
+  color: #ededed;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.carousel-item-button-home {
+  border: 1px solid #ededed;
+  border-radius: 50px;
+}
+.active .carousel-item-title,
+.active .carousel-item-description,
+.active .date,
+.active .carousel-item-span,
+.active .carousel-item-buttons {
+  opacity: 1;
+}
+.loading-message {
+  position: absolute;
+  top: 11vh;
+  margin-left: 1rem;
+  font-size: 2rem;
+  color: #ededed;
 }
 
-.carousel-item-info {
-    height: 60%;
-    width: 50%;
+/* Media queries */
+@media screen and (max-width: 1025px) {
+  .carousel-item-title {
+    font-size: 3rem;
+  }
+  .carousel-item-info {
+    height: 45%;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .carousel-item-poster {
+    height: 35rem;
+  }
+  .carousel-item-info {
+    height: 50%;
+    width: 100%;
+    padding-right: 0;
+  }
+  .carousel-item-title {
+    font-size: 2rem;
+  }
+  .carousel-item-description {
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+  }
+  .date,
+  .carousel-item-span {
+    font-size: 1.5rem;
+  }
+  .carousel-item-buttons {
+    width: 100%;
+  }
+  .carousel-item-buttons button {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 540px) {
+  .home-carousel-item {
+    flex-direction: column;
+    height: 120vh;
+  }
+  .carousel-item-poster {
+    height: 20rem;
+  }
+  .carousel-item-info {
+    height: 50vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 0 1rem;
-}
-
-.carousel-item-title, .carousel-item-description, .date, .carousel-item-span, .carousel-item-buttons {
-    transition: opacity 1s ease;
-    opacity: 0; 
-}
-
-.carousel-item-title {
-    font-size: 4rem;
-    transition-delay: .1s;
-}
-
-
-
-.carousel-item-description {
-    font-weight: 400;
-    transition-delay: .2s;
-}
-
-.active .carousel-item-description {
-    opacity: 1;
-}
-
-
-.date {
-    font-size: 2rem;
-    transition-delay: .3s;
-}
-
-.active .date {
-    opacity: 1; 
-}
-
-.carousel-item-span {
-    position: relative;
-    font-size: 2rem;
-    transition-delay: .4s;
-}
-
-.rating-secondary {
-    font-size: 1.5rem;
-    color: rgb(155, 155, 155);
-}
-
-.imdb-logo {
-    position: absolute;
-    height: 100%;
-    object-fit: contain;
-    margin-left: 1rem;
-}
-
-.active .carousel-item-span {
-    opacity: 1;
-}
-
-.carousel-item-buttons {
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
-    opacity: 0; 
-    transition-delay: .5s;
-}
-
-.carousel-item-buttons button {
-    background: transparent;
-    padding: 1rem;
-    color: #fff;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.carousel-item-button-home {
-    border: 1px solid #fff;
-    border-radius: 50px; 
-}
-
-
-.active .carousel-item-title, .active .carousel-item-description, .active .date, .active .carousel-item-span, .active .carousel-item-buttons {
-    opacity: 1;
-}
-
-.loading-message {
-    position: absolute;
-    top: 11vh;
-    margin-left: 1rem;
+    padding: 0;
+    text-align: center;
+  }
+  .carousel-item-title {
     font-size: 2rem;
-    color: #fff;
+  }
+  .carousel-item-description,
+  .date,
+  .carousel-item-span {
+    font-size: 1.5rem;
+  }
+  .imdb-logo {
+    margin-left: 0.5rem;
+  }
+  .carousel-item-buttons {
+    justify-content: center;
+  }
 }
-
-@media screen and (max-width: 1025px) {
-    .carousel-item-title {
-        font-size: 3rem;
-    }
-    .carousel-item-info {
-        height: 45%;
-        padding-right: 0;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .carousel-item-poster {
-        height: 35rem;
-    }
-
-    .carousel-item-info {
-        height: 50%;
-        width: 100%;
-        padding-right: 0;
-    }
-
-    .carousel-item-title {
-        font-size: 2rem;
-    }
-
-    .carousel-item-description {
-        font-size: 1.5rem;
-        padding-right: .5rem;
-    }
-
-    .date, .carousel-item-span {
-        font-size: 1.5rem;
-    }
-
-    .carousel-item-buttons {
-        width: 100%;
-    }
-
-    .carousel-item-buttons button {
-        font-size: 1rem;
-    }
-}
-
-
-@media screen and (max-width: 540px) {
-    .home-carousel-item {
-        flex-direction: column;
-        height: 120vh;
-    }
-
-    .carousel-item-poster {
-        height: 20rem;
-    }
-    .carousel-item-info {
-        height: 50vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 0;
-        text-align: center;
-    }
-
-    .carousel-item-title {
-        font-size: 2rem;
-    }
-
-    .carousel-item-description, .date, .carousel-item-span {
-        font-size: 1.5rem;
-    }
-
-    .imdb-logo {
-        margin-left: .5rem;
-    }
-
-    .carousel-item-buttons {
-        justify-content: center;
-    }
-
-}
-
 @media screen and (max-width: 500px) {
-    .carousel-item-poster {
-        margin-top: 4rem;
-    }
-
-    .carousel-item-info {
-        height: 60vh;
-    }
+  .carousel-item-poster {
+    margin-top: 4rem;
+  }
+  .carousel-item-info {
+    height: 60vh;
+  }
 }
-
-
 @media screen and (max-width: 380px) {
-    .home-carousel-item {
-        height: 150vh;
-    }
-
-    .carousel-item-poster {
-        height: 17rem;
-    }
-
-    .carousel-item-info {
-        height: 60%;
-    }
-
-    .carousel-item-description, .carousel-item-span, .date {
-        font-size: 1.2rem;
-    }
-
-    .carousel-item-buttons {
-        flex-direction: column;
-    }
-
-    .carousel-item-buttons button {
-        padding: .8rem 1.2rem;
-        margin: .5rem 0;
-    }
-
-    .carousel-item-button-secondary i {
-        margin-right: .5rem;
-    }
+  .home-carousel-item {
+    height: 150vh;
+  }
+  .carousel-item-poster {
+    height: 17rem;
+  }
+  .carousel-item-info {
+    height: 60%;
+  }
+  .carousel-item-description,
+  .carousel-item-span,
+  .date {
+    font-size: 1.2rem;
+  }
+  .carousel-item-buttons {
+    flex-direction: column;
+  }
+  .carousel-item-buttons button {
+    padding: 0.8rem 1.2rem;
+    margin: 0.5rem 0;
+  }
+  .carousel-item-button-secondary i {
+    margin-right: 0.5rem;
+  }
 }

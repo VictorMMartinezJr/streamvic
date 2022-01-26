@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import ErrorDiv from '../../Stateless/Error';
 
 // BaseURL for images
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -50,7 +51,7 @@ const Carousel = () => {
 
     return (
         <div className='slider-section'>
-            {error && <div>{error}</div>}
+            {error && <ErrorDiv message={error} />}
             {!isLoading && !error && <div className='slider-container'>
                 <h1 className='slider-title'>Trending Movies</h1>
                 <AliceCarousel mouseTracking items={items} responsive={responsive} animationDuration={600} infinite animationType='fadeout' autoHeight disableDotsControls renderNextButton={renderNextButton} renderPrevButton={renderPrevButton} />

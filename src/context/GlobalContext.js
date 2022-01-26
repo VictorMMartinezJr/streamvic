@@ -15,7 +15,6 @@ export const GlobalContext = ({ children }) => {
             {children}
         </Favs.Provider>
     )
-
 }
 
 export default GlobalContext

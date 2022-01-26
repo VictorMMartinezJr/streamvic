@@ -2,15 +2,16 @@ import SwiperCore, { Autoplay, EffectFade } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './HomeCarousel.css';
 import "swiper/swiper-bundle.css";
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar';
 import { IoIosStar } from 'react-icons/io';
 import imdb from '../../../assets/imdb.png';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
-import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
+import FavsBtn from '../../Stateless/FavsBtn';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
+import ErrorDiv from '../../Stateless/Error';
+import LoadingDiv from '../../Stateless/Loading';
 
 // beginning of url for tmdb images
 const img = 'https://image.tmdb.org/t/p/original';
@@ -29,8 +30,8 @@ const HomeCarousel = () => {
     return (
         <div className='home-carousel'>
             <Navbar position='fixed' />
-            {error && <div>{error}</div>}
-            {isLoading && <div className='loading-message'>Loading...</div>}
+            {error && <ErrorDiv message={error} />}
+            {isLoading && <LoadingDiv />}
             {!isLoading && !error && <Swiper
                 modules={[EffectFade, Autoplay]}
                 effect='fade'

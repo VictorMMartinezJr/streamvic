@@ -1,13 +1,16 @@
+import React, {Suspense} from 'react';
 import { useParams } from 'react-router-dom';
-import DetailsCarousel from './DetailsCarousel';
 import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './Details.css';
-import Navbar from '../../Stateful/Navbar/Navbar';
-import TvTrailer from '../../Stateful/TvTrailer/TvTrailer';
-import FavsBtn from '../../Stateless/FavsBtn/FavsBtn';
+import Navbar from '../../Stateful/Navbar';
+import FavsBtn from '../../Stateless/FavsBtn';
 import { Helmet } from 'react-helmet-async';
 import useFetchDetails from '../../hooks/useFetchDetails';
+import ErrorDiv from '../../Stateless/Error';
+import LoadingDiv from '../../Stateless/Loading';
+const TvTrailer = React.lazy(() => import('../../Stateful/TvTrailer'));
+const DetailsCarousel = React.lazy(() => import('./DetailsCarousel'));
 
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -33,8 +36,8 @@ const ShowDetails = () => {
                 <meta name='description' content={showDetails.overview} />
             </Helmet>
             <Navbar position='static' />
-            {error && <div>{error}</div>}
-            {isLoading && <h1 style={{ color: '#fff' }}>Loading...</h1>}
+            {error && <ErrorDiv message={error} />}
+            {isLoading && <LoadingDiv />}
             {!isLoading && !error && <div className='details-main'>
                 <div className='details-main-info'>
                     <img className='details-poster' src={`${imgUrl}${showDetails.poster_path}`} alt={showDetails.name} />
@@ -64,11 +67,15 @@ const ShowDetails = () => {
             </div>}
             <span className='details-trailer'>
                 <h1 className='trailer-h1'>Watch Trailer</h1>
-                <TvTrailer id={id} />
+                <Suspense fallback={<LoadingDiv />}>
+                    <TvTrailer id={id} />
+                </Suspense>
             </span>
 
             <div className='details-cast'>
-                <DetailsCarousel url={`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`} title={'Cast'} />
+                <Suspense fallback={<LoadingDiv />}>
+                    <DetailsCarousel url={`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`} title={'Cast'} />
+                </Suspense>
             </div>
         </div>
     )

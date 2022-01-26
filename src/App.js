@@ -1,14 +1,16 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/Pages/Home/Home';
-import Movies from './components/Pages/Movies/Movies';
-import Shows from './components/Pages/Shows/Shows';
+import Home from './components/Pages/Home';
 import GlobalContext from './context/GlobalContext';
-import Favorites from './components/Pages/Favorites/Favorites';
-import Search from './components/Pages/Search/Search';
-import MovieDetails from './components/Pages/Details/MovieDetails';
-import ShowDetails from './components/Pages/Details/ShowsDetails';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { lazy, Suspense } from 'react';
+import LoadingDiv from './components/Stateless/Loading';
+const Movies = lazy(() => import('./components/Pages/Movies'));
+const Shows = lazy(() => import('./components/Pages/Shows'));
+const Favorites = lazy(() => import('./components/Pages/Favorites'));
+const Search = lazy(() => import('./components/Pages/Search'));
+const MovieDetails = lazy(() => import('./components/Pages/Details/MovieDetails'));
+const ShowDetails = lazy(() => import('./components/Pages/Details/ShowsDetails'));
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
               <Route exact path='/'>
                 <Home />
               </Route>
+              <Suspense fallback={<LoadingDiv />}>
               <Route path='/movies'>
                 <Movies />
               </Route>
@@ -43,6 +46,7 @@ function App() {
               <Route path='/showsdetails/:id'>
                 <ShowDetails />
               </Route>
+            </Suspense>
             </Switch>
           </GlobalContext >
         </Router >

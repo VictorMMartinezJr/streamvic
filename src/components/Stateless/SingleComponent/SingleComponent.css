@@ -1,68 +1,62 @@
 .component {
-    margin: 2rem;
-    color: #fff;
-    height: 530px;
-    width: 300px;
-    transition: transform .2s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: rgb(41, 41, 41);
-    padding: 0 .5rem;
-    border-radius: 10px;
-    position: relative;
+  margin: 2rem;
+  color: #ededed;
+  height: 530px;
+  width: 300px;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(41, 41, 41);
+  padding: 0 0.5rem;
+  border-radius: 10px;
+  position: relative;
 }
-
 .component-img-container {
-    position: relative;
+  position: relative;
 }
-
 .trending-movie-rating {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #000;
-    padding: .5rem;
-    border-radius: 0 5px 0 0;
-    font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #171717;
+  padding: 0.5rem;
+  border-radius: 0 5px 0 0;
+  font-weight: bold;
 }
-
 .component:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: transform .2s ease-in-out;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
 }
-
 .component-img {
-    width: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
-    border: none;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  border: none;
 }
-
 .component-title {
-    font-size: 1.1rem;
-    margin: .5rem 0;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
 }
-
 .component-release {
-    color: grey;
-    font-size: 1rem;
+  color: grey;
+  font-size: 1rem;
 }
 
+/* Media queries */
 @media screen and (max-width: 350px) {
-    .component {
-        margin: 2rem;
-        height: 500px;
-        width: 250px;
-    }
+  .component {
+    margin: 2rem;
+    height: 500px;
+    width: 250px;
+  }
 }
-
 @media screen and (max-width: 300px) {
-    .component {
-        margin: 2rem;
-        height: 450px;
-        width: 200px;
-    }
+  .component {
+    margin: 2rem;
+    height: 450px;
+    width: 200px;
+  }
 }

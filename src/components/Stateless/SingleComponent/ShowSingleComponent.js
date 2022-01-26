@@ -1,7 +1,7 @@
 import './SingleComponent.css';
 import unavaliable from '../../../assets/photo-unavaliable.png';
 import { Link } from 'react-router-dom';
-import FavsBtn from '../FavsBtn/FavsBtn';
+import FavsBtn from '../FavsBtn';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
