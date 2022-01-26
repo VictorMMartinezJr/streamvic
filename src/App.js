@@ -40,10 +40,10 @@ function App() {
               <Route path='/search'>
                 <Search />
               </Route>
-              <Route path='/moviedetails/:id'>
+              <Route path='/moviedetails/:id/:title'>
                 <MovieDetails />
               </Route>
-              <Route path='/showsdetails/:id'>
+              <Route path='/showsdetails/:id/:title'>
                 <ShowDetails />
               </Route>
             </Suspense>

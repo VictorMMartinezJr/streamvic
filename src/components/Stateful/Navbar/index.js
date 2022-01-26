@@ -42,16 +42,16 @@ const Navbar = ({ backgroundColor, position }) => {
             </div>
             <ul className={navActive ? 'nav-links active' : 'nav-links'}>
                 <Link to='/' style={{ color: '#fff', textDecoration: "none" }}>
-                    <li className='nav-link'>Home</li>
+                    <li role={'presentation'} className='nav-link'>Home</li>
                 </Link>
                 <Link to='/movies' style={{ color: '#fff', textDecoration: "none" }}>
-                    <li className='nav-link'>Movies</li>
+                    <li role={'presentation'} className='nav-link'>Movies</li>
                 </Link>
                 <Link to='/tv' style={{ color: '#fff', textDecoration: "none" }}>
-                    <li className='nav-link'>TV Shows</li>
+                    <li role={'presentation'} className='nav-link'>TV Shows</li>
                 </Link>
                 <Link to='/favorites' style={{ color: '#fff', textDecoration: "none" }}>
-                    <li className='nav-link'>Favorites</li>
+                    <li role={'presentation'} className='nav-link'>Favorites</li>
                 </Link>
                 <Link to='/search' style={{ color: '#fff', textDecoration: "none" }}>
                     <i className="fas fa-search search-icon"></i>

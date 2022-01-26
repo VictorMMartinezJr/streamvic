@@ -25,8 +25,8 @@
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
-.img-container h4 {
-  color: #ededed;
+.img-container h1 {
+  color: #fff;
   font-weight: 400;
   margin-top: 0.5rem;
   text-align: center;

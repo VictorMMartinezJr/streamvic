@@ -20,7 +20,7 @@ const Carousel = () => {
             <Link to={`/moviedetails/${data.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                 <LazyLoadImage effect='blur' className='carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
             </Link>
-            <h4>{data?.name || data?.title}</h4>
+            <h1>{data?.name || data?.title}</h1>
         </div>
     })
 

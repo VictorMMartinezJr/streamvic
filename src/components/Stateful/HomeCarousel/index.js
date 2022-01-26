@@ -56,7 +56,7 @@ const HomeCarousel = () => {
                                         <img className='imdb-logo' src={imdb} alt="imdb" />
                                     </div>
                                     <div className='carousel-item-buttons'>
-                                        <Link to={`/moviedetails/${movie?.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
+                                        <Link to={`/moviedetails/movieid/${movie?.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                                             <button className='carousel-item-button-home'><i className="fas fa-arrow-right"></i>Learn More</button>
                                         </Link>
                                         <FavsBtn content={movie} className='carousel' />

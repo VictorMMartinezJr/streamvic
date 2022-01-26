@@ -3,7 +3,7 @@
   width: 100%;
   background-size: cover;
   background-position: center;
-  background-color: rgba(0, 0, 0, 0.7); /* Tint color */
+  background-color: rgba(0, 0, 0, 0.9); /* Tint color */
   background-blend-mode: multiply;
   display: flex;
   justify-content: center;
