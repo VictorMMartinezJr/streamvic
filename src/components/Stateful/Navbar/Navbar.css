@@ -92,6 +92,8 @@
     top: 10vh;
     height: 90vh;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
     transform: translateX(100%);
     width: 100%;
     z-index: 9;
@@ -103,6 +105,10 @@
   }
   .nav-link {
     font-size: 2rem;
+    margin: 1rem 0;
+  }
+  .search-icon {
+    margin-top: 1rem;
   }
   .burger {
     display: inline-block;
