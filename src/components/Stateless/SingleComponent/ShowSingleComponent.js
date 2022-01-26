@@ -5,7 +5,6 @@ import FavsBtn from '../FavsBtn';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-
 const imgUrl = 'https://image.tmdb.org/t/p/original';
 
 const ShowSingleComponent = ({ title, poster, rating, release, id, content }) => {

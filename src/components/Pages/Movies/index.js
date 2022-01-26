@@ -9,7 +9,6 @@ import useFetch from '../../hooks/useFetch';
 import ErrorDiv from '../../Stateless/Error';
 import LoadingDiv from '../../Stateless/Loading';
 
-
 const Movies = () => {
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('popular');
@@ -32,7 +31,6 @@ const Movies = () => {
         setPage(pageNum);
         window.scroll(0, 0);
     };
-
 
     return (
         <section className='content-container'>
