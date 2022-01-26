@@ -1,4 +1,4 @@
-.content-favorite-icon {
+.content-heart-icon {
   position: absolute;
   font-size: 2rem;
   bottom: 10px;
@@ -6,12 +6,12 @@
   color: #e91919;
   cursor: pointer;
 }
-.details-favorite-icon {
+.details-heart-icon {
   color: #e91919;
   font-size: 4rem;
   cursor: pointer;
 }
-.carousel-favorite-icon {
+.carousel-heart-icon {
   color: #e91919;
   cursor: pointer;
   font-size: 3rem;

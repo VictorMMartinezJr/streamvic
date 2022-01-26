@@ -1,21 +1,22 @@
-import './Pagination.css'
+import './Pagination.css';
+import {BsArrowRightCircle, BsArrowLeftCircle} from 'react-icons/bs'
 
 const Pagination = ({ page, handlePrevPage, handleNextPage, handleChoosePage, maxPages }) => {
     // enable previous button only if page does not === 1
     const prevBtn = () => {
         if (page === 1) {
-            return <i className="fas fa-chevron-circle-left pagination-btn disabled"></i>
+            return <BsArrowLeftCircle className="arrow-icon pagination-btn disabled" />
         } else {
-            return <i className="fas fa-chevron-circle-left pagination-btn" onClick={handlePrevPage}></i>
+            return <BsArrowLeftCircle className="arrow-icon pagination-btn" onClick={handlePrevPage} />
         }
     }
 
     // enable next button only if page does not === maxPages
     const nextBtn = () => {
-        if (page === maxPages - 1) {
-            return <i className="fas fa-chevron-circle-right pagination-btn disabled"></i>
+        if (page === maxPages) {
+            return <BsArrowRightCircle className="arrow-icon pagination-btn disabled" />
         } else {
-            return <i className="fas fa-chevron-circle-right pagination-btn" onClick={handleNextPage}></i>
+            return <BsArrowRightCircle className="arrow-icon pagination-btn" onClick={handleNextPage} />
         }
     }
 

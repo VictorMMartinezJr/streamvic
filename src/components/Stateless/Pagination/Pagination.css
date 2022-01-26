@@ -6,6 +6,10 @@
   margin: 1rem 0;
   padding: 1rem 0;
 }
+.arrow-icon {
+  color: #fff;
+  cursor: pointer;
+}
 .pagination-btn {
   font-size: 2.5rem;
 }

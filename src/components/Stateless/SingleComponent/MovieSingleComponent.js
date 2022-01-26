@@ -18,7 +18,7 @@ const MovieSingleComponent = ({ title, poster, rating, release, id, content }) =
                     </Link>
                     <p className='trending-movie-rating' style={{ color: rating >= 8 ? 'green' : 'orange' }}>{rating > 0 ? rating : 'n/a'}</p>
                 </div>
-                <FavsBtn content={content} className='content' />
+                <FavsBtn content={content} className='content'/>
                 <h3 className='component-title'>{title}</h3>
                 <span className='component-release'>{release}</span>
             </div>

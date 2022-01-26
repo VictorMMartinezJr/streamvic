@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Favs } from '../../../context/GlobalContext';
+import {BsSuitHeart, BsSuitHeartFill} from 'react-icons/bs'
 import './FavsBtn.css';
 
 const FavsBtn = ({ content, className, checkFav }) => {
@@ -35,9 +36,9 @@ const FavsBtn = ({ content, className, checkFav }) => {
     return (
         <>
             {!checkFav || isFav(content.id) ? (
-                <i className={`far fa-heart ${className}-favorite-icon active`} onClick={() => removeFromFav(content)}></i>
+                <BsSuitHeartFill className={`${className}-heart-icon`} onClick={() => removeFromFav(content)} />
             ) : (
-                <i className={`far fa-heart ${className}-favorite-icon`} onClick={() => addToFav(content)}></i>
+                <BsSuitHeart className={`${className}-heart-icon`} onClick={() => addToFav(content)} />
             )}
         </>
     );

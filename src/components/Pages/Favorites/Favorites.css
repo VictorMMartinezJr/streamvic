@@ -16,6 +16,10 @@
   font-size: 2rem;
   font-weight: 700;
 }
+.heart-icon {
+  color: #e91919;
+  transform: translateY(5px);
+}
 
 /* Media queries */
 @media screen and (max-width: 500px) {

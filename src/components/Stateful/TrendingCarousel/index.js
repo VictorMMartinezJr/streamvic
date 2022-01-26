@@ -6,6 +6,7 @@ import useFetch from '../../hooks/useFetch';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import ErrorDiv from '../../Stateless/Error';
+import {BsArrowRightCircle, BsArrowLeftCircle} from 'react-icons/bs'
 
 // BaseURL for images
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -42,11 +43,11 @@ const Carousel = () => {
 
     // Next/Previous Buttons
     const renderNextButton = () => {
-        return <i className="fas fa-arrow-right"></i>
+        return <BsArrowRightCircle className="fas fa-arrow-right" />
     }
 
     const renderPrevButton = () => {
-        return <i className="fas fa-arrow-left"></i>
+        return <BsArrowLeftCircle className="fas fa-arrow-left" />
     }
 
     return (
