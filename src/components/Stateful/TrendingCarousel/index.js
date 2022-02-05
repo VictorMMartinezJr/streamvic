@@ -18,10 +18,10 @@ const Carousel = () => {
     // Items in carousel
     const items = data.map(data => {
         return <div className='img-container'>
-            <Link to={`/moviedetails/${data.id}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
+            <Link to={`/moviedetails/${data.id}/${data.title}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
                 <LazyLoadImage effect='blur' className='carousel-img' src={data.profile_path === null || data.poster_path === null ? unavaliable : `${imgUrl}${data?.poster_path || data?.profile_path}`} alt={data?.title} />
             </Link>
-            <h1>{data?.name || data?.title}</h1>
+            <h1>{data?.title}</h1>
         </div>
     })
 
