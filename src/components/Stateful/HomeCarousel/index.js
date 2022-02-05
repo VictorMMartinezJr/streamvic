@@ -47,9 +47,9 @@ const HomeCarousel = () => {
                                 <LazyLoadImage effect='blur' className='carousel-item-poster' src={`${img}${movie?.poster_path}`} alt={movie.title} />
                                 <div className='carousel-item-info'>
                                     <h1 className='carousel-item-title'>{movie?.title || movie?.name || movie?.original_name}</h1>
-                                    <h1 className='carousel-item-description'>
+                                    <p className='carousel-item-description'>
                                         {truncate(movie.overview, 150)}
-                                    </h1>
+                                    </p>
                                     <span className='date'>{movie.release_date || movie?.first_air_date}</span>
                                     <div className='carousel-item-span'>
                                         <IoIosStar color='#FFC300' /> {movie?.vote_average}<span className='rating-secondary'>/10</span>
@@ -57,7 +57,7 @@ const HomeCarousel = () => {
                                     </div>
                                     <div className='carousel-item-buttons'>
                                         <Link to={`/moviedetails/${movie?.id}/{movie.title}`} style={{ textDecoration: 'none' }} onClick={() => window.scroll(0, 0)}>
-                                            <button className='carousel-item-button-home'>Movie Details</button>
+                                            <button className='carousel-item-button'>Movie Details</button>
                                         </Link>
                                         <FavsBtn content={movie} className='carousel' />
                                     </div>

@@ -48,14 +48,15 @@
   transition-delay: 0.1s;
 }
 .carousel-item-description {
-  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.5;
   transition-delay: 0.2s;
 }
 .active .carousel-item-description {
   opacity: 1;
 }
 .date {
-  font-size: 2rem;
+  font-size: 1.5rem;
   transition-delay: 0.3s;
 }
 .active .date {
@@ -63,11 +64,11 @@
 }
 .carousel-item-span {
   position: relative;
-  font-size: 2rem;
+  font-size: 1.5rem;
   transition-delay: 0.4s;
 }
 .rating-secondary {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: rgb(155, 155, 155);
 }
 .imdb-logo {
@@ -86,18 +87,16 @@
   opacity: 0;
   transition-delay: 0.5s;
 }
-.carousel-item-buttons button {
+.carousel-item-button {
   background: transparent;
-  padding: 1rem;
+  border: 1px solid #ededed;
+  padding: 0.8rem 2rem;
   color: #ededed;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   cursor: pointer;
-}
-.carousel-item-button-home {
-  border: 1px solid #ededed;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 .active .carousel-item-title,
 .active .carousel-item-description,
@@ -115,10 +114,17 @@
 }
 
 /* Media queries */
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1280px) {
   .carousel-item-title {
     font-size: 3rem;
   }
+  .carousel-item-description,
+  .carousel-item-span,
+  .date {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (max-width: 1024px) {
   .carousel-item-info {
     height: 45%;
     padding-right: 0;
@@ -129,32 +135,21 @@
     height: 35rem;
   }
   .carousel-item-info {
-    height: 50%;
-    width: 100%;
-    padding-right: 0;
-  }
-  .carousel-item-title {
-    font-size: 2rem;
+    height: 55%;
   }
   .carousel-item-description {
-    font-size: 1.5rem;
     padding-right: 0.5rem;
   }
-  .date,
-  .carousel-item-span {
-    font-size: 1.5rem;
-  }
-  .carousel-item-buttons {
-    width: 100%;
-  }
-  .carousel-item-buttons button {
-    font-size: 1rem;
+  .carousel-item-button {
+    font-size: 1.25rem;
   }
 }
 @media screen and (max-width: 540px) {
   .home-carousel-item {
     flex-direction: column;
-    height: 120vh;
+    height: auto;
+    padding-top: 10vh;
+    border: 2px solid red;
   }
   .carousel-item-poster {
     height: 20rem;
@@ -172,49 +167,37 @@
   .carousel-item-title {
     font-size: 2rem;
   }
+  .carousel-item-description {
+    padding: 0 1.2rem;
+  }
   .carousel-item-description,
   .date,
   .carousel-item-span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
-  .imdb-logo {
-    margin-left: 0.5rem;
+  .rating-secondary {
+    font-size: 0.8rem;
   }
-  .carousel-item-buttons {
-    justify-content: center;
-  }
-}
-@media screen and (max-width: 500px) {
-  .carousel-item-poster {
-    margin-top: 4rem;
-  }
-  .carousel-item-info {
-    height: 60vh;
+  .carousel-item-button {
+    font-size: 1.2rem;
   }
 }
-@media screen and (max-width: 380px) {
-  .home-carousel-item {
-    height: 150vh;
-  }
+@media screen and (max-width: 400px) {
   .carousel-item-poster {
     height: 17rem;
   }
   .carousel-item-info {
-    height: 60%;
+    height: 70vh;
+  }
+}
+@media screen and (max-width: 320px) {
+  .carousel-item-title {
+    font-size: 1.5rem;
   }
   .carousel-item-description,
+  .date,
   .carousel-item-span,
-  .date {
-    font-size: 1.2rem;
-  }
-  .carousel-item-buttons {
-    flex-direction: column;
-  }
-  .carousel-item-buttons button {
-    padding: 0.8rem 1.2rem;
-    margin: 0.5rem 0;
-  }
-  .carousel-item-button-secondary i {
-    margin-right: 0.5rem;
+  .carousel-item-button {
+    font-size: 1rem;
   }
 }
