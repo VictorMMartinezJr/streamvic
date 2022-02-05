@@ -85,34 +85,38 @@
     font-size: 1.2rem;
   }
 }
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
   .nav-links {
     background: #111111;
     position: absolute;
-    top: 10vh;
-    height: 90vh;
+    top: 9vh;
+    height: auto;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
-    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
     width: 100%;
     z-index: 9;
-    transition: transform 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
   }
   .nav-links.active {
-    transform: translateX(0);
-    transition: transform 0.2s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: all;
   }
   .nav-link {
     font-size: 2rem;
     margin: 1rem 0;
   }
   .search-icon {
-    margin-top: 1rem;
+    margin: 1rem;
+    font-size: 2rem;
   }
   .burger {
     display: inline-block;
     z-index: 10;
+    margin-right: 2rem;
   }
   .name {
     font-size: 2rem;
@@ -121,18 +125,12 @@
     justify-content: space-between;
     width: 100%;
   }
-  .burger {
-    margin-right: 2rem;
-  }
   .title {
     height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #ededed;
-  }
-  .name {
-    font-size: 2rem;
   }
   .navbar-img {
     height: 35px;
@@ -144,6 +142,12 @@
   }
   .navbar-img {
     height: 30px;
+  }
+  .nav-link {
+    font-size: 1.5rem;
+  }
+  .search-icon {
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 300px) {

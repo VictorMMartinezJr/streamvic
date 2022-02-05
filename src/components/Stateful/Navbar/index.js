@@ -42,20 +42,20 @@ const Navbar = ({ backgroundColor, position }) => {
                 <div className={navActive ? "line-3 toggle" : 'line-3'}></div>
             </div>
             <ul className={navActive ? 'nav-links active' : 'nav-links'}>
-                <Link to='/' style={{ color: '#fff', textDecoration: "none" }}>
+                <Link to='/' style={{ color: '#f2f2f2', textDecoration: "none" }}>
                     <li role={'presentation'} className='nav-link'>Home</li>
                 </Link>
-                <Link to='/movies' style={{ color: '#fff', textDecoration: "none" }}>
+                <Link to='/movies' style={{ color: '#f2f2f2', textDecoration: "none" }}>
                     <li role={'presentation'} className='nav-link'>Movies</li>
                 </Link>
-                <Link to='/tv' style={{ color: '#fff', textDecoration: "none" }}>
+                <Link to='/tv' style={{ color: '#f2f2f2', textDecoration: "none" }}>
                     <li role={'presentation'} className='nav-link'>TV Shows</li>
                 </Link>
-                <Link to='/favorites' style={{ color: '#fff', textDecoration: "none" }}>
+                <Link to='/favorites' style={{ color: '#f2f2f2', textDecoration: "none" }}>
                     <li role={'presentation'} className='nav-link'>Favorites</li>
                 </Link>
-                <Link to='/search' style={{ color: '#fff', textDecoration: "none" }}>
-                    <GoSearch className="fas fa-search search-icon" />
+                <Link to='/search' style={{ color: '#f2f2f2', textDecoration: "none" }}>
+                    <GoSearch className="search-icon" />
                 </Link>
             </ul>
         </div>
