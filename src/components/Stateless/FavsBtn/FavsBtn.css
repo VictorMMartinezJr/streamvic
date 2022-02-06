@@ -14,11 +14,17 @@
 .carousel-heart-icon {
   color: #e91919;
   cursor: pointer;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-left: 1rem;
 }
 .content-favorite-icon.active,
 .details-favorite-icon.active,
 .carousel-favorite-icon.active {
   font-weight: 700;
+}
+
+@media screen and (max-width: 1280px) {
+  .carousel-heart-icon {
+    font-size: 2.5rem;
+  }
 }

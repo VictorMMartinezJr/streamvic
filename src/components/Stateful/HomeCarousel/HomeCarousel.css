@@ -35,6 +35,7 @@
   justify-content: space-evenly;
   padding: 0 1rem;
 }
+/* Set opacity 0 so active class can get added on load */
 .carousel-item-title,
 .carousel-item-description,
 .date,
@@ -98,6 +99,7 @@
   cursor: pointer;
   border-radius: 10px;
 }
+/* Class that gets added when new movie appears */
 .active .carousel-item-title,
 .active .carousel-item-description,
 .active .date,
@@ -120,8 +122,9 @@
   }
   .carousel-item-description,
   .carousel-item-span,
-  .date {
-    font-size: 1.25rem;
+  .date,
+  .carousel-item-button {
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -140,16 +143,12 @@
   .carousel-item-description {
     padding-right: 0.5rem;
   }
-  .carousel-item-button {
-    font-size: 1.25rem;
-  }
 }
 @media screen and (max-width: 540px) {
   .home-carousel-item {
     flex-direction: column;
     height: auto;
     padding-top: 10vh;
-    border: 2px solid red;
   }
   .carousel-item-poster {
     height: 20rem;
@@ -170,16 +169,8 @@
   .carousel-item-description {
     padding: 0 1.2rem;
   }
-  .carousel-item-description,
-  .date,
-  .carousel-item-span {
-    font-size: 1.2rem;
-  }
   .rating-secondary {
     font-size: 0.8rem;
-  }
-  .carousel-item-button {
-    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 400px) {
