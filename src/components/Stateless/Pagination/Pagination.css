@@ -9,8 +9,6 @@
 .arrow-icon {
   color: #fff;
   cursor: pointer;
-}
-.pagination-btn {
   font-size: 2.5rem;
 }
 .pagination-btn:hover {
@@ -40,4 +38,17 @@
 }
 .pagination-container.hide {
   display: none;
+}
+@media screen and (max-width: 768px) {
+  .pagination-container {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .pagination-container {
+    width: 80%;
+  }
+  .arrow-icon {
+    font-size: 2rem;
+  }
 }

@@ -41,7 +41,7 @@ const Shows = () => {
             <Navbar backgroundColor='#111111' position='static' />
             <FilterBtn setSort={setSort} setPage={setPage} />
             <div className='content-data'>
-                {error && <ErrorDiv message={error}/>}
+                {error && <ErrorDiv message={error} custom='100vh'/>}
                 {isLoading && <LoadingDiv />}
                 {!isLoading && !error && shows && shows.map(shows => {
                     return <div key={shows.id}>

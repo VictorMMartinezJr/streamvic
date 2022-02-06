@@ -41,7 +41,7 @@ const Movies = () => {
             <Navbar backgroundColor='#111111' position='static' />
             <FilterBtn setSort={setSort} setPage={setPage} />
             <div className='content-data'>
-                {error && <ErrorDiv message={error}/>}
+                {error && <ErrorDiv message={error} custom='100vh' />}
                 {isLoading && <LoadingDiv />}
                 {!isLoading && !error && movies && movies.map(movie => {
                     return <div key={movie.id} className='movie-component'>

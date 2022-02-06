@@ -35,7 +35,7 @@ const MoviesDetails = () => {
                 <meta name='description' content={movieDetails.overview} />
             </Helmet>
             <Navbar position='static' />
-            {error && <ErrorDiv message={error} />}
+            {error && <ErrorDiv message={error} custom='100vh'/>}
             {isLoading && <LoadingDiv />}
             {!isLoading && !error && <div className='details-main'>
                 <div className='details-main-info'>

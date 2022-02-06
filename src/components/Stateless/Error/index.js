@@ -2,6 +2,7 @@ import './Error.css'
 import errorPopcorn from '../../../assets/error.svg';
 
 const ErrorDiv = ({message, custom}) => {
+    // Uppercase first letter of error message
     const toUpper = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
