@@ -3,13 +3,13 @@ import MovieSingleComponent from '../../Stateless/SingleComponent/MovieSingleCom
 import ShowSingleComponent from '../../Stateless/SingleComponent/ShowSingleComponent'
 import './Search.css';
 import Navbar from '../../Stateful/Navbar';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import ErrorDiv from '../../Stateless/Error';
 
 const Search = () => {
     const [data, setData] = useState([]);
     const [searchInputError, setSearchInputError] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState(null);
     const [error, setError] = useState(null);
     const [searched, setSearched] = useState(false);
     const [option, setOption] = useState(1);
@@ -47,6 +47,7 @@ const Search = () => {
     }
 
     const searchData = (searchTerm) => {
+        // Remove whitespace
         searchTerm = searchTerm.trim();
 
         if (searchTerm === '') {
@@ -69,7 +70,7 @@ const Search = () => {
     const displayEmptyResultMsg = () => {
         if (searchInputError) {
             return <p className="search-error-message">{searchInputError}</p>;
-        } else if (data && data.length === 0) {
+        } else if (data.results && data.length === 0) {
             return (
                 <p className="search-error-message">
                     Nothing Found
@@ -103,7 +104,7 @@ const Search = () => {
                     </span>
                 </form>
                 <div className='search-data'>
-                    {error && <ErrorDiv message={error}/>}
+                    {error && <ErrorDiv message={error} custom='90vh'/>}
                     {data && data.map(data => {
                         return <div key={data.id}>
                             {option === 1 ? <MovieSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} /> : <ShowSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />}

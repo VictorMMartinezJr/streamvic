@@ -1,5 +1,5 @@
 .search-container {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +29,7 @@
 }
 .search-title {
   color: #ededed;
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 1rem 0;
   text-shadow: 0 0 10px #000;
 }
@@ -51,14 +51,10 @@
   margin-bottom: 1rem;
 }
 .search-type {
-  font-size: 2rem;
+  font-size: 1.7rem;
   position: relative;
   cursor: pointer;
   padding: 0.5rem;
-}
-.search-type.active {
-  font-size: 2rem;
-  position: relative;
 }
 .search-type.active::after {
   content: "";
@@ -74,20 +70,22 @@
   position: relative;
 }
 .search-input {
-  font-size: 2rem;
+  font-size: 1.7rem;
   border: none;
   border-radius: 5px;
-  margin: 0 1rem;
-  padding: 0 0.5rem;
+  padding: 0 1rem 0 0;
   outline: none;
+  width: 100%;
 }
 .search-error-message {
   position: absolute;
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #e91919;
+  margin-top: 1rem;
+  top: 100%;
+  left: 50%;
   width: 100%;
-  margin: auto;
-  margin-top: 0.5rem;
+  transform: translateX(-50%);
   text-transform: uppercase;
   text-shadow: 0 0 10px #000;
   font-weight: 700;
@@ -98,7 +96,7 @@
   align-items: center;
 }
 .search-form button {
-  font-size: 2rem;
+  font-size: 1.7rem;
   border: none;
   border-radius: 5px;
   margin: 0 1rem;
@@ -112,59 +110,74 @@
 /* Media queries */
 @media screen and (max-width: 1280px) {
   .search-title {
-    color: #ededed;
     font-size: 3rem;
-    margin-top: 1rem;
   }
 }
 @media screen and (max-width: 1024px) {
-  .search-title {
-    color: #ededed;
-    font-size: 3rem;
-  }
-  .search-error-message {
-    font-size: 1rem;
-  }
   .search-option {
     width: 50%;
   }
 }
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
   .search-title {
-    color: #ededed;
     font-size: 2rem;
   }
-  .search-input,
-  .search-form button {
+  .search-type {
+    font-size: 1.4rem;
+  }
+  .search-error-message {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+}
+@media screen and (max-width: 540px) {
+  .search-title {
     font-size: 1.5rem;
   }
-  .search-option {
-    width: 100%;
+  .search-type {
+    font-size: 1rem;
+  }
+  .search-form button {
+    font-size: 1rem;
+  }
+  .search-input {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
   }
 }
 @media screen and (max-width: 500px) {
-  .search-input {
-    width: 90%;
-  }
   .search-title {
     color: #ededed;
-    font-size: 1.5rem;
-  }
-  .search-type,
-  .search-type.active {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 400px) {
-  .form-span {
-    flex-direction: column;
-  }
-  .search-input {
-    width: 95%;
-    margin: 0 0 2rem 0;
+  .search-type.active::after {
+    height: 3px;
+    bottom: 0px;
   }
   .search-error-message {
     position: absolute;
     bottom: 10px;
+  }
+  .search-option {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .search-title {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .search-title {
+    font-size: 0.8rem;
+  }
+  .search-type {
+    font-size: 0.8rem;
+  }
+  .search-error-message {
+    font-size: 0.6rem;
   }
 }

@@ -30,7 +30,7 @@ const HomeCarousel = () => {
     return (
         <div className='home-carousel'>
             <Navbar position='fixed' />
-            {error && <ErrorDiv message={error} />}
+            {error && <ErrorDiv message={error} custom='100vh' />}
             {isLoading && <LoadingDiv />}
             {!isLoading && !error && <Swiper
                 modules={[EffectFade, Autoplay]}

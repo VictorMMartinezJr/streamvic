@@ -1,11 +1,14 @@
 import './Error.css'
-import errorPopcorn from '../../../assets/popcorn.svg';
+import errorPopcorn from '../../../assets/error.svg';
 
-const ErrorDiv = ({message}) => {
+const ErrorDiv = ({message, custom}) => {
+    const toUpper = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     return (
-        <div className='error-div'>
-            <img src={errorPopcorn} alt="error-popcorn" />
-            <p>{message}</p>
+        <div className='error-div' style={{height: custom}}>
+            <img className='error-svg' src={errorPopcorn} alt="error-popcorn" />
+            <p>{toUpper(message)}</p>
         </div>
     );
 }
