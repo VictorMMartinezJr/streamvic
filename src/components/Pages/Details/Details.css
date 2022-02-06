@@ -22,7 +22,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-left: 2rem;
 }
 .details-main-info-text {
   height: 100%;
@@ -36,47 +35,44 @@
 }
 .details-overview {
   font-size: 1.5rem;
+  line-height: 1.5;
   width: 90%;
 }
 .details-genres {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
 }
-.details-genres h1 {
+.details-genres h2 {
   margin-bottom: 0.5rem;
+  font-size: 2rem;
 }
 .details-genres span {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+}
+.details-genre {
+  padding-right: 1rem;
 }
 .gauge {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   position: relative;
 }
 .gauge-rating {
   color: #ededed;
-  font-weight: 400;
+  font-weight: 700;
   margin-top: 0.5rem;
 }
 .gauge-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 200px;
-}
-.details-favorite-icon {
-  color: #e91919;
-  font-size: 4rem;
-}
-.details-favorite-icon.active {
-  font-weight: 700;
+  width: 150px;
 }
 .details-poster {
   height: 450px;
@@ -92,11 +88,11 @@
   width: 100%;
 }
 .trailer {
-  height: 300px;
+  height: 500px;
   width: 700px;
 }
 .trailer-h1 {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   position: relative;
 }
 .trailer-h1:after {
@@ -108,25 +104,10 @@
   height: 3px;
   width: 100%;
 }
-.details-btn {
-  padding: 1rem 3rem;
-  margin-left: 2rem;
-  background: transparent;
-  border: 2px solid #ededed;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: transform 0.2s ease-in-out;
-  font-size: 1.2rem;
-}
-.details-btn:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  transition: transform 0.2s ease-in-out;
-}
-/* Media queires */
+
+/* Media queries */
 @media screen and (max-width: 1280px) {
   .details-main-info {
-    height: 400px;
     width: 95%;
   }
   .details-poster {
@@ -135,7 +116,7 @@
   }
   .details-overview {
     font-size: 1.2rem;
-    width: 95%;
+    width: 90%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -145,15 +126,16 @@
   .details-title {
     font-size: 2rem;
   }
-  .details-overview {
-    font-size: 1.2rem;
-    width: 95%;
+  .details-genres h2 {
+    font-size: 1.5rem;
   }
-  .details-genres {
-    width: 60%;
+  .details-overview {
+    font-size: 1rem;
+  }
+  .details-genre {
+    font-size: 1rem;
   }
 }
-
 @media screen and (max-width: 540px) {
   .details-container {
     height: auto;
@@ -173,57 +155,34 @@
     margin-bottom: 3rem;
   }
   .details-poster {
-    height: 350px;
+    height: 300px;
     margin-left: 0;
     margin: 1rem 0;
   }
-  .details-span {
-    justify-content: center;
-  }
   .details-overview {
     width: 100%;
-    padding: 0 0.5rem;
   }
   .details-title {
     margin-bottom: 1rem;
   }
   .details-genres {
     align-items: center;
-    width: 100%;
-    margin: 2rem 0;
-  }
-  .details-genres span {
-    width: 70%;
+    margin: 1rem 0;
   }
   .gauge-container {
     align-self: center;
   }
 }
 @media screen and (max-width: 500px) {
-  .details-main-info {
-    margin-bottom: 0;
-  }
-  .gauge {
-    width: 120px;
-    height: 120px;
-    align-self: center;
-  }
   .trailer {
     width: 100%;
   }
 }
-@media screen and (max-width: 400px) {
-  .details-btn {
-    font-size: 1rem;
-    padding: 1rem;
+@media screen and (max-width: 320px) {
+  .details-title {
+    font-size: 1.5rem;
   }
-  .details-genres span {
-    width: 95%;
-  }
-}
-@media screen and (max-width: 300px) {
-  .details-btn {
-    padding: 0.5rem;
-    margin-right: 1rem;
+  .details-genres h2 {
+    font-size: 1.3rem;
   }
 }

@@ -39,14 +39,14 @@ const MoviesDetails = () => {
             {isLoading && <LoadingDiv />}
             {!isLoading && !error && <div className='details-main'>
                 <div className='details-main-info'>
-                    <img effect='blur' className='details-poster' src={`${imgUrl}${movieDetails.poster_path}`} alt={movieDetails.name} />
+                    <img effect='blur' className='details-poster'  src={`${imgUrl}${movieDetails.poster_path}`} alt={movieDetails.name} />
                     <div className='details-main-info-text'>
                         <h1 className='details-title'>{movieDetails.title}</h1>
                         <p className='details-overview'>{truncate(movieDetails.overview, 300)}</p>
                         <div className='details-genres'>
-                            <h1>Genres</h1>
+                            <h2>Genres</h2>
                             <span>
-                                {movieDetails.genres.map((genre, i) => <h3 key={i}>{genre.name}</h3>)}
+                                {movieDetails.genres.map((genre, i) => <h3 className='details-genre' key={i}>{genre.name}</h3>)}
                             </span>
 
                         </div>
