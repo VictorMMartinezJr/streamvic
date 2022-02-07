@@ -1,3 +1,6 @@
+.content-filter {
+  margin-top: 0.5rem;
+}
 .filter-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -59,8 +62,17 @@
   }
 }
 @media screen and (max-width: 360px) {
+  .filter-title {
+    font-size: 1.2rem;
+  }
   .filter-btn,
   .filter-options {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .filter-btn,
+  .filter-options {
+    font-size: 0.8rem;
   }
 }
