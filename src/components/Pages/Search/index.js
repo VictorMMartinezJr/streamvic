@@ -15,6 +15,7 @@ const Search = () => {
     const [option, setOption] = useState(1);
 
     const fetchData = () => {
+        // Fetch movies
         if (option === 1) {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
                 .then(resp => {
@@ -30,6 +31,7 @@ const Search = () => {
                     setError(err.message);
                 })
         } else {
+            // Fetch tv shows
             fetch(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
                 .then(resp => {
                     if (!resp.ok) {
@@ -50,6 +52,7 @@ const Search = () => {
         // Remove whitespace
         searchTerm = searchTerm.trim();
 
+        // Set empty error if button is clicked with empty input
         if (searchTerm === '') {
             setSearchInputError(
                 'Search Term is Empty'
@@ -70,7 +73,7 @@ const Search = () => {
     const displayEmptyResultMsg = () => {
         if (searchInputError) {
             return <p className="search-error-message">{searchInputError}</p>;
-        } else if (data.results && data.length === 0) {
+        } else if (data.results && data.results.length() === 0) {
             return (
                 <p className="search-error-message">
                     Nothing Found
@@ -91,7 +94,7 @@ const Search = () => {
                     <h1 className='search-title'>GET INFO ON MILLIONS OF TITLES.<br></br>EXPLORE NOW</h1>
                     <span className='search-option'>
                         <span className={option === 1 ? 'search-type active' : 'search-type'} style={{ color: '#fff' }} onClick={() => setOption(1)}>MOVIES</span>
-                        <span className={option === 2 ? 'search-type active' : 'search-type'} style={{ color: '#fff' }} onClick={() => setOption(2)}>TV SHOWS</span>
+                        <span className={option === 2 ? 'search-type active' : 'search-type'} style={{ color: '#fff' }} onClick={() => {setOption(2); fetchData()}}>TV SHOWS</span>
                     </span>
                     <span className='form-span'>
                         <div className='search-input-container'>

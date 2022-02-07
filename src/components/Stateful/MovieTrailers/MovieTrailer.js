@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
+import trailerError from '../../../assets/trailer-error.svg'
 
 const MovieTrailer = ({ id }) => {
     const [trailerKey, setTrailerKey] = useState('')
@@ -12,7 +13,9 @@ const MovieTrailer = ({ id }) => {
                 }
                 return resp.json()
             })
-            .then(data => setTrailerKey(data.results[0].key))
+            .then(data => setTrailerKey(data.results[0].key)).catch(err => {
+                return err;
+            })
     }
 
     useEffect(() => {
@@ -22,6 +25,7 @@ const MovieTrailer = ({ id }) => {
 
     return (
         <div>
+            {!trailerKey && <img className='carousel-img' src={trailerError} alt='trailer-error'/>}
             {trailerKey && <YouTube videoId={trailerKey} className='trailer' />}
         </div>
     )
