@@ -9,7 +9,7 @@ import ErrorDiv from '../../Stateless/Error';
 const Search = () => {
     const [data, setData] = useState([]);
     const [searchInputError, setSearchInputError] = useState(false);
-    const [searchTerm, setSearchTerm] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState(null);
     const [searched, setSearched] = useState(false);
     const [option, setOption] = useState(1);
@@ -104,7 +104,7 @@ const Search = () => {
                     </span>
                 </form>
                 <div className='search-data'>
-                    {error && <ErrorDiv message={error} custom='90vh'/>}
+                    {error && <ErrorDiv message={error} custom='93vh' />}
                     {data && data.map(data => {
                         return <div key={data.id}>
                             {option === 1 ? <MovieSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} /> : <ShowSingleComponent content={data} title={data.title || data.name} poster={data.poster_path} rating={data.vote_average} release={data.release_date || data.first_air_date} id={data.id} />}
