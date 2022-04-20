@@ -91,11 +91,11 @@
   height: 500px;
   width: 700px;
 }
-.trailer-h1 {
+.trailer-h2 {
   margin-bottom: 1rem;
   position: relative;
 }
-.trailer-h1:after {
+.trailer-h2:after {
   content: "";
   position: absolute;
   bottom: -5px;
