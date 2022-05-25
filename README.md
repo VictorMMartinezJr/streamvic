@@ -1,7 +1,6 @@
 # StreamVic
 
-<<<<<<< HEAD
-A dynamic web app for users to browsing, searching and bookmarking movies.
+<<<<<<< HEAD A dynamic web app for users to browsing, searching and bookmarking movies.
 
 ## Overview
 
